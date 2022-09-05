@@ -44,6 +44,7 @@
                     
                     <th scope="col">imag</th>
                     <th scope="col">title</th>
+                    <th scope="col">slug</th>
                     <th scope="col">content</th>
                     <th scope="col">price_per_night</th>
                     <th scope="col">address</th>
@@ -56,6 +57,7 @@
                   
                   
                       <tr>
+                
                         @foreach ( $file as $value)
                          @php 
                           $str1  = str_replace("[","",$value->filenames);
@@ -74,6 +76,7 @@
 
 
                         <td>{{$value->title->title}}</td>
+                        <td>{{$value->title->slug}}</td>
                        <td> {!!Str::limit($value->title->content,30)!!}</td>
                         <td>{{$value->title->feacture->price_per_night}}</td>
                         <td>{{$value->title->feacture->address}}</td>

@@ -48,7 +48,7 @@ Route::get('/favorites' ,[FavoritesController::class,'index']);
 Route::get('/parthership' ,[PartnershipController::class,'index']);
 Route::get('/montgomery/{place}' ,[MontgomeryController::class,'index']);
 Route::get('/birmingham' ,[BirminghamController::class,'index']);
-Route::get('/montgomeryimg/{place}-{files_id}-{title}' ,[MontgomeryimgController::class,'index']);
+Route::get('/montgomeryimg/{place}-{slug}' ,[MontgomeryimgController::class,'index']);
 Route::get('/Birminghamimg/{files_id}-{title}' ,[Birminghamimg::class,'index']);
 Route::get('/delete/{id}',[ListController::class,'delete']);
 Route::get('/edit/{id}',[ListController::class,'edit']);
@@ -57,6 +57,7 @@ Route::get('/deletevalidation/{id}',[ ListController::class,'delete']);
 Route::get('/image/', [FileController::class, 'create']);
 Route::post('/file/', [FileController::class, 'store']);
 Route::get('/gallery/{file_id}',[GalleryController::class,'gallery'])->name('gallery');
+Route::get('title-get-slug',[FileController::class,'getSlub'])->name('title.slug');
 
 
 

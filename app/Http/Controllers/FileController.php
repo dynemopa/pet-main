@@ -6,6 +6,8 @@ use App\Models\title;
 use App\Models\feacture;
 use Illuminate\Http\Request;
 use DB;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+
 
 class FileController extends Controller
 {
@@ -20,6 +22,7 @@ class FileController extends Controller
             'filenames' => 'required',
             'filenames.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title'=>'required|max:255|min:10',
+            'slug'=>'required|unique:feacture',
             'content'=>'required',
             'price_per_night'=>'required|between:0,99.99',
             'cleaning_fee'=>'required',
@@ -103,5 +106,17 @@ class FileController extends Controller
         
          return back()->with('success', 'Your Data has been successfully added');
     }
+    public function getSlub(Request $request)
+    {
+        $slug = SlugService::createSlug(title::class, 'slug', $request->title);
+
+        return response()->json([
+            'status'=>true,
+            'slug'=>$slug,
+
+        ]);
+         
+    }
+
    
 }

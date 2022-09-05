@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 use Redirect;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 class ListController extends Controller
 {
     public function list(Request $request)
@@ -56,8 +57,7 @@ class ListController extends Controller
 
    
    }
-
-
+   
     
 }
 

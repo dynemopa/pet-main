@@ -14,10 +14,10 @@ use Illuminate\support\DB;
 
 class MontgomeryimgController extends Controller
 {
-    public function index($place,$files_id,$title)
+    public function index($place,$slug)
     {
        
-      
+ 
         //  $file = file::with( ['title','title.feacture'])->wherehas('title.feacture',function ($query) use ($title)
         //    {
         //     $query->where('title','=',$title);
@@ -27,11 +27,15 @@ class MontgomeryimgController extends Controller
         // $file1 = file::with( ['title','title.feacture'])->take(3)->get();
         $file1 = file::with( ['title','title.feacture'])->wherehas('title.feacture',function ($query) use ($place)
            {
-            $query->where('address','=',$place);
+            $query->where('city','=',$place);
            })->take(3)->get();
           
         $userid = Auth::user();
-        $file=file::with('title','title.feacture')->where('files_id','=',$files_id)->get();
+        $file = file::with( ['title','title.feacture'])->wherehas('title.feacture',function ($query) use ($slug)
+        {
+         $query->where('slug','=',$slug);
+        })->get();
+      
      return  view('frontend.montgomeryimg', compact('file','userid','file1','place'));
     }
 }

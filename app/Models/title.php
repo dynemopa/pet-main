@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\feacture;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class title extends Model
 {
   
-    use HasFactory;
+    use HasFactory,Sluggable;
+  
     protected $fillable = [
        
         'title',
@@ -24,6 +26,14 @@ class title extends Model
     public function files()
     {
         return $this->belongTo(file::class);
+    }
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 
 

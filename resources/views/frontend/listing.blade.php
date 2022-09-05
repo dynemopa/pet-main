@@ -49,10 +49,9 @@
        <span style="color: red">@error('title'){{$message}}@enderror</span>
       </div>
       <div class="form-group">
-        <label for="">stug</label>
-       
-        <input type="text" id="title"  class="form-control"  name="stug"   required >
-       <span style="color: red">@error('stug'){{$message}}@enderror</span>
+        <label for="">slug</label>
+        <input type="text" class="form-control"  name="slug"  id="slug"  required >
+       <span style="color: red">@error('slug'){{$message}}@enderror</span>
       </div>
       <div class="form-group">
         <label for="">content</label>
@@ -83,12 +82,8 @@
           <h3>Property Address</h3>
           
           <div class="form-group">
-              <label for="">Address:</label>
-              <select class="form-control" id="address" name="address" >
-                <option value="" selected>Address</option>
-                <option value="Montgomery">Montgomery</option>
-                <option value="Birmingham">Birmingham</option>
-              </select>
+            <label for="">address</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}"required ><br>
               <span style="color: red">@error('address'){{$message}}@enderror</span>
           </div>
           <div class="form-group">
@@ -351,7 +346,11 @@
           </div>
           <div class="form-group">
               <label for="">City:</label>
-              <input type="text" class="form-control" id="city" name="city"  value="{{old('city')}}" required>
+              <select class="form-control" id="city" name="city" >
+                <option value="" selected>City</option>
+                <option value="Montgomery">Montgomery</option>
+                <option value="Birmingham">Birmingham</option>
+              </select>
               <span style="color: red">@error('city'){{$message}}@enderror</span>
           </div>
           <div class="form-group">
@@ -530,6 +529,22 @@
             $(this).parents(".hdtuto").remove();
         });
       });
+  </script>
+  <script>
+    $("#title").change(function(){
+     $("button[type='submit']").prop('disabled',true);
+         $.ajax({
+        url:'{{route("title.slug")}}',
+        type:'get',
+        data:{title:$(this).val()},  
+        datatype:'json',
+        success:function(response){
+          $("button[type='submit']").prop('disabled',false);
+          $("#slug").val(response.slug);
+        }
+      })
+      
+    });
   </script>
 
 </body>

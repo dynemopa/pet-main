@@ -13,7 +13,7 @@ class MontgomeryController extends Controller
 {
     public function index(Request $request,$place)
     {
-  
+
       
         if($request!="")
         {
@@ -140,7 +140,7 @@ class MontgomeryController extends Controller
                 // return view('frontend.montgomery',compact('file'));
                 $file = file::with( ['title','title.feacture'])->wherehas('title.feacture',function ($query) use($place)
                 {
-                 $query->where('address','=',$place);
+                 $query->where('city','=',$place);
                 })->get();
                      return view('frontend.montgomery',compact('file','place'));
             }
