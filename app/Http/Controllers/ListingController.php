@@ -53,6 +53,7 @@ class ListingController extends Controller
         $request->validate( [
            
             'title'=>'required|max:255|min:10',
+            'slug'=>'required|unique:feacture',
             'content'=>'required',
             'price_per_night'=>'required|between:0,99.99',
             'cleaning_fee'=>'required',
@@ -97,6 +98,7 @@ class ListingController extends Controller
         $filesid=$file->files_id;
         $title=title::find($title_id);
         $title->title= $request['title'];
+        $title->slug= $request['slug'];
         $title->content= $request['content'];
         $title->files_id=$filesid;
         $title->save();

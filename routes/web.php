@@ -23,6 +23,7 @@ use App\Http\Controllers\ListingController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\Birminghamimg;
+use App\Http\Controllers\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,7 @@ use App\Http\Controllers\Birminghamimg;
 */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('welcome');
 Route::get('/service' ,[ServiceController::class,'index']);
+Route::get('/news' ,[NewsController::class,'index']);
 Route::get('/blog' ,[BlogControllaer::class,'index']);
 Route::get('/about' ,[AboutController::class,'index']);
 Route::get('/support' ,[SupportController::class,'index']);

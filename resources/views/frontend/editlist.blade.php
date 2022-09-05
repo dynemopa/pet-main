@@ -82,6 +82,10 @@
             <input id="title"  class="form-control"  name="title"value="{{$value->title->title}}">
         </div>
         <div class="form-group">
+            <label for="">Slug</label>
+            <input id="slug"  class="form-control"  name="slug"value="{{$value->title->slug}}" readonly>
+        </div>
+        <div class="form-group">
                 <label for="">Content</label>
                 <textarea  class="form-control" name="content" rows="4" cols="50" id="content"  >{!!$value ->title->content!!}</textarea>
         </div>
@@ -286,6 +290,22 @@
 <script>
     CKEDITOR.replace('content');
   </script>
+   <script>
+    $("#title").change(function(){
+     $("button[type='submit']").prop('disabled',true);
+         $.ajax({
+        url:'{{route("title.slug")}}',
+        type:'get',
+        data:{title:$(this).val()},  
+        datatype:'json',
+        success:function(response){
+          $("button[type='submit']").prop('disabled',false);
+          $("#slug").val(response.slug);
+        }
+      })
+      
+    });
+  </script>  
 </body>
 </html>
  @endsection

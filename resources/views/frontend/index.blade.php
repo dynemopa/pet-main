@@ -455,7 +455,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="card mb-4 box-shadow d48">
-              <img class="card-img-top d47" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/hero-longtermlease-300x200.webp">
+              <a href="{{url('/news')}}"><img class="card-img-top d47" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/hero-longtermlease-300x200.webp"></a>
               <div class="card-body d43" >
                 <p class="card-text  d42" >How we’ve increased cleaning standards for Dwella across the globe</p>
                  <p class="card-text d41"  >At Dwella, we know that now more than ever, a clean and safe place to stay is a top concern. Your health and well-being are</p>
@@ -468,7 +468,7 @@
           </div>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow d48">
-              <img class="card-img-top d47" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/Hayleigh-300x197.webp" alt="Card image cap">
+              <a href="{{url('/news')}}"><img class="card-img-top d47" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/Hayleigh-300x197.webp" alt="Card image cap"></a>
               <div class="card-body d43">
                 <p class="card-text d42" >Life at Dwella: creating memorable experiences for our guests</p>
                 <p class="card-text d41">Our Service Principles are a set of values that guides our customer guest services team members when we’re communicating with guests. We incorporate our principles</p>
@@ -481,7 +481,7 @@
           </div>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow d48">
-              <img class="card-img-top d47" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/Sonder-Living-Room-1-300x200.webp">
+            <a href="{{url('/news')}}">  <img class="card-img-top d47" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/Sonder-Living-Room-1-300x200.webp"></a>
               <div class="card-body d43" >
                 <p class="card-text d42" >Introducing Dwella backgrounds for your next Zoom meeting</p>
                 <p class="card-text d41"  >These days, it feels like everyone lives on Zoom, whether for team check-ins, all-hands meetings, or happy hours with friends and family. That’s why one</p>
@@ -496,7 +496,7 @@
     </div>
     <div class="container text-center d45">
       <center>
-        <button type="button" class="btn btn-success">Go to blog</button>
+       <a href="{{url('/blog')}}"><button type="button" class="btn btn-success">Go to blog</button></a>
     </center>
     </div>
 </section>

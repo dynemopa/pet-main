@@ -19,7 +19,7 @@
 
     <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
   </head>
-  <body>
+  <body style="background-color:#fffbf2f">
  
     <div id="app">
       <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light" id="sidenav-main">
