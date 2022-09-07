@@ -24,6 +24,8 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\Birminghamimg;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Paymentcontroller;
+use App\Http\Controllers\CovidController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +48,7 @@ Route::get('/dashboard' ,[ContactController::class,'dashboard']);
 // Route::get('/delete',[ProfilerController::class,'delete']);
 // Route::get('update',[ProfilerController::class,'update'])->name('update-profile');
 Route::get('/profile' ,[ProfilerController::class,'showuser']);
+Route::get('/covid' ,[CovidController::class,'index']);
 Route::get('/favorites' ,[FavoritesController::class,'index']);
 Route::get('/parthership' ,[PartnershipController::class,'index']);
 Route::get('/montgomery/{place}' ,[MontgomeryController::class,'index']);
@@ -78,6 +81,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::post('/changePassword',[ChangePasswordController::class, 'changePasswordPost'])->name('changePasswordPost');
 	Route::get('/showprofile' ,[ShowProfileController::class,'showprofile'])->name('showprofile');
 	Route::post('/update',[ShowProfileController::class,'update'])->name('update');
+	Route::get('/payment',[Paymentcontroller::class,'payment'])->name('payment');
+	Route::get('/pay/',[Paymentcontroller::class,'pay'])->name('pay');
 	Route::get('/list',[ListController::class,'list'])->name('list');
 
 	Route::get('/listing',[ListingController::class,'listing'])->name('listing');

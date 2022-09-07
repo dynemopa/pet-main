@@ -1,6 +1,31 @@
 @extends('frontend.layout.main')
 
 @section('content')
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <style>
+            div#social-links {
+                margin: 0 auto;
+                max-width: 500px;
+            }
+            div#social-links ul li {
+                display: inline-block;
+            }          
+            div#social-links ul li a {
+                padding: 5px;
+                border: 1px solid rgb(43, 38, 38);
+                margin: 1px;
+                font-size: 20px;
+                color: #222;
+                background-color: #d5b7a6;
+                border-radius: 180px 180px 180px 180px
+            }
+            #social-links  ul li a:hover 
+            {
+                color: white;
+	        background-color: #4a669d;
+            }
+        </style>
 <div class="container-fluid" style=" margin-top:66px">
     <div>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215731.35909383564!2d-86.38612523887772!3d32.34401162432513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888e8194b0d481f9%3A0x8e1b511d354285ff!2sMontgomery%2C%20AL%2C%20USA!5e0!3m2!1sen!2sin!4v1662362387403!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -38,6 +63,7 @@
               <p>Cleaning shared touch-points within common areas of the building is a priority. For buildings leased entirely by Dwella, we’ve instructed our housekeepers to disinfect all shared touch points, and have closed gyms, lounge areas, and other communal spaces. For buildings shared with residents or guests with other organizations, we have coordinated with landlords to ensure cleaning protocols match our high expectations.</p>
               <p>We know how important it is to provide a clean space for our guests, and we look forward to continuing to provide enhanced cleaning services for every Dwella space. Book your Dwella today.</p>
               <img src="https://mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/Clean-Apartment.webp" height="250px" width="100%">
+              <p style="margin-top: 53px; color:#af856d"><b>Category:</b><a href="{{url('/covid')}}"> covid</a></p>
             </div>
             <div class="col-md-4" style="padding-right: 86px; padding-top: 150px;">
                 <div style="  padding: 26px; background-color: #eaece3; margin-top:10px">
@@ -64,6 +90,10 @@
                 </div>
             </div>
         </div>
+    </div>
+  
+    <div class=" mt-4" style="margin-left: 215px;margin-top:-8.5rem!important;">
+        {!! $shareComponent !!}
     </div>
 
 </div>

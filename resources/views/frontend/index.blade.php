@@ -1,5 +1,42 @@
 @extends('frontend.layout.main')
 @section('content')
+<style>
+  body {margin:0;height:2000px;}
+  
+  .icon-bar {
+    position: fixed;
+    top: 50%;
+    left: 97.5%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 15px;
+  }
+  
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+  
+  .facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  
+  </style>
 <section id="hero">
   <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
@@ -177,7 +214,7 @@
      
 </section>
 
-<section class="section1 container-fluid" style="height: 60%;">
+<section class="section1 container-fluid" style="height: 26%;">
 <div class="col-md-12">
   <div class="row">
       <div class="col-md-6 p4">
@@ -500,16 +537,9 @@
     </center>
     </div>
 </section>
+<div class="icon-bar">
+  <a href="https://www.facebook.com/login/" class="facebook"><i class="fa fa-facebook"></i></a> 
+  <a href="https://www.instagram.com/accounts/login/" class="twitter"><i class="fa fa-instagram"></i></a> 
+</div>
 <!-- end  Album sction -->
-
-
-
-
-
-
-
-
-
-
-
   @endsection

@@ -8,7 +8,17 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return view('frontend.news');
+        $shareComponent = \Share::page(
+            'https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/',
+            'Your share text comes here',
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()        
+        ->reddit();
+        return view('frontend.news', compact('shareComponent'));
        
     }
 }
