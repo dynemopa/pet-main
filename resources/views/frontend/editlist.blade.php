@@ -16,7 +16,7 @@
 <body>
   <a href="{{route('showlisting')}}"> <button type="button" class="btn btn-primary text-right">BACK</button></a>
     <div class="container">
-    
+
     @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Sorry!</strong> Here have some issue please check<br><br>
@@ -35,6 +35,7 @@
     @endif
 
     @foreach ( $file as $value)
+
         @php
         $sleeping_situation=json_decode($value->title->feacture->sleeping_situation);
         @endphp 

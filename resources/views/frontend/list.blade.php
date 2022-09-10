@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.css"/>
+
   <div class="header bg-primary pb-6">
     <div class="container-fluid">
       <div class="header-body">
@@ -12,15 +15,6 @@
             <div class="form-group">
               <div class="col-md-12">
                 <div class="row">
-                  <div class="col-md-8">
-                    <input type="search" name="search" id="search" class="form-control" placeholder="Enter Name And Email For Search" value="{{$search}}">
-                  </div>
-                  <div class="col-md-2"> <button class="btn btn-primary">Search</button></div>
-                  <div class="col-md-2"> <a  href="{{url('list/')}}"
-                    <button class="btn btn-primary" type="button">Reset</button>
-                    </a>
-                  </div>
-
                 </div>
               </div>
              </div>
@@ -50,7 +44,7 @@
         </div>
     @endif
           <div class="table-responsive">
-            <table class="table align-items-center table-dark table-flush">
+            <table class="table align-items-center  table-flush table table-bordered" id="table">
               <thead style="background-color: #edb2b2">
                 <tr>
                   <th>@sortablelink('name')
@@ -61,7 +55,7 @@
                 </tr>
               </thead>
                
-              <tbody class="list">
+              <tbody class="list" >
                   
                   @foreach ( $user as $value)
                       <tr>
@@ -130,6 +124,7 @@
       </div>
     </div>
   </div>
+ <button class="btn btn-success btn-sm" onclick="window.location.reload()">REFRESH</button> 
   
   {{-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -163,5 +158,50 @@
       document.getElementById("demo").innerHTML = text;
     }
     </script> --}}
-   
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $("#table").DataTable();
+
+        $( "#tablecontents" ).sortable({
+          items: "tr",
+          cursor: 'move',
+          opacity: 0.6,
+          update: function() {
+              sendOrderToServer();
+          }
+        });
+
+        function sendOrderToServer() {
+          var order = [];
+          var token = $('meta[name="csrf-token"]').attr('content');
+          $('tr.row1').each(function(index,element) {
+            order.push({
+              id: $(this).attr('data-id'),
+              position: index+1
+            });
+          });
+
+          $.ajax({
+            type: "POST", 
+            dataType: "json", 
+            url: "{{ url('post-sortable') }}",
+                data: {
+              order: order,
+              _token: token
+            },
+            success: function(response) {
+                if (response.status == "success") {
+                  console.log(response);
+                } else {
+                  console.log(response);
+                }
+            }
+          });
+        }
+      });
+    </script>
 @endsection

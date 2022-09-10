@@ -52,6 +52,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
+          <li><div id="google_translate_element" style="height: 21px;"></div></li>
          <li>
           <?php if (Auth::check()) { ?>
                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -76,6 +77,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf
                     </form> -->
+         
           <li><a href="{{route('register')}}">Sign-up</a></li>
           <li><a href="{{url('/service')}}">Checkin</a></li>
           <li class="dropdown"><a href="#"><span></span> <i >&#9776;</i></a>

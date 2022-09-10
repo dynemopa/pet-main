@@ -26,6 +26,7 @@ use App\Http\Controllers\Birminghamimg;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Paymentcontroller;
 use App\Http\Controllers\CovidController;
+use App\Http\Controllers\BookingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +43,8 @@ Route::get('/news' ,[NewsController::class,'index']);
 Route::get('/blog' ,[BlogControllaer::class,'index']);
 Route::get('/about' ,[AboutController::class,'index']);
 Route::get('/support' ,[SupportController::class,'index']);
+Route::get('/gallery/{file_id}',[GalleryController::class,'gallery'])->name('gallery');
+// ContactController
 Route::get('/contect' ,[ContactController::class,'index']);
 Route::get('/dashboard' ,[ContactController::class,'dashboard']);
 Route::get('/dashboard' ,[ContactController::class,'dashboard']);
@@ -51,18 +54,21 @@ Route::get('/profile' ,[ProfilerController::class,'showuser']);
 Route::get('/covid' ,[CovidController::class,'index']);
 Route::get('/favorites' ,[FavoritesController::class,'index']);
 Route::get('/parthership' ,[PartnershipController::class,'index']);
+
 Route::get('/montgomery/{place}' ,[MontgomeryController::class,'index']);
 Route::get('/birmingham' ,[BirminghamController::class,'index']);
 Route::get('/montgomeryimg/{place}-{slug}' ,[MontgomeryimgController::class,'index']);
 Route::get('/Birminghamimg/{files_id}-{title}' ,[Birminghamimg::class,'index']);
+// ListController
 Route::get('/delete/{id}',[ListController::class,'delete']);
 Route::get('/edit/{id}',[ListController::class,'edit']);
 Route::put('/Update-data/{id}',[ListController::class,'update']);
 Route::get('/deletevalidation/{id}',[ ListController::class,'delete']);
+// FileController
 Route::get('/image/', [FileController::class, 'create']);
 Route::post('/file/', [FileController::class, 'store']);
-Route::get('/gallery/{file_id}',[GalleryController::class,'gallery'])->name('gallery');
 Route::get('title-get-slug',[FileController::class,'getSlub'])->name('title.slug');
+
 
 
 
@@ -84,22 +90,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::get('/payment',[Paymentcontroller::class,'payment'])->name('payment');
 	Route::get('/pay/',[Paymentcontroller::class,'pay'])->name('pay');
 	Route::get('/list',[ListController::class,'list'])->name('list');
-
+	// BookingController
+	Route::get('/booking',[BookingController::class,'index'])->name('booking');
+	Route::get('/bookingadd',[BookingController::class,'add'])->name('bookingadd');
+	Route::get('showbooking',[BookingController::class,'showbooking'])->name('showbooking');
+	Route::get('/allbooking/{id}',[BookingController::class,'allbooking'])->name('allbooking');
+	Route::get('/editbooking/{id}',[BookingController::class,'editbooking'])->name('editbooking');
+	Route::get('/updatebooking/{id}',[BookingController::class,'updatebooking'])->name('updatebooking');
+	Route::get('/deletebooking/{id}',[BookingController::class,'deletebooking'])->name('deletebooking');
+	// ListingController
 	Route::get('/listing',[ListingController::class,'listing'])->name('listing');
-
 	Route::get('/showlisting/',[ListingController::class,'showlisting'])->name('showlisting');
 	Route::get('/listdelete/{file_id}/{title_id}/{feacture_id}',[ListingController::class,'listdelete'])->name('listdelete');
 	Route::get('/listedit/{files_id}/{title_id}/{feacture_id}',[ListingController::class,'listedit'])->name('listedit');
 	Route::post('/updatelist/{files_id}/{title_id}/{feacture_id}',[ListingController::class,'updatelist'])->name('updatelist');
-
 	Route::get('/showlist/{file_id}',[ListingController::class,'showlist'])->name('showlist');
 
-	
-	 
-  
-	
-
-	
 // });
 
 

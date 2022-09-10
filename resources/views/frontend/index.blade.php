@@ -105,6 +105,7 @@
 </section>
 
 <section class="container" id="rcorners3" style=" margin-top: -46px;">
+  <form action="{{url('/montgomery')}}/{{"Montgomery"}}" method="get">
   <div id="rcorners2">
       
 
@@ -120,12 +121,13 @@
                 <div class="col-md-11" style="margin-top:-32px; margin-left:15px;">
                   <input style="width: 90%;" class="form-control d53" list="browsers" name="myBrowser" placeholder="Birmingham & Montgomery" >
                   <datalist id="browsers">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <option value="Birmingham">Birmingham</option>
+                    <option value="Montgomery">Montgomery</option>
+                    <option value="Downtown Montgomery, Birmingham">Downtown Montgomery, Birmingham</option>
+                    <option value="Downtown Montgomery">Downtown Montgomery</option>
+                    <option value="United States">United States</option>
+                    <option value="West Midlands">West Midlands</option>
+                    
                   </datalist>
                 </div>
               </div>
@@ -175,12 +177,13 @@
 
           </div>
           <div class="col-md-2" style="padding-top: 9px; padding-left: 26px;">
-           <button type="button"  class="btn btn-primary d56">Search</button>
+           <button type="submit"  class="btn btn-primary d56">Search</button>
           </div>
         </div>
       </div>
 
  </div>
+</form>
 </section>
 <section class="test3">
   <h2 class="bar">Two Great Cities</h2>
@@ -541,5 +544,12 @@
   <a href="https://www.facebook.com/login/" class="facebook"><i class="fa fa-facebook"></i></a> 
   <a href="https://www.instagram.com/accounts/login/" class="twitter"><i class="fa fa-instagram"></i></a> 
 </div>
+
+<script  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+  </script>
 <!-- end  Album sction -->
   @endsection

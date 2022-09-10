@@ -55,7 +55,7 @@
                 </li>
                
                 <li class="nav-item">
-                  <a class="nav-link" href="">
+                  <a class="nav-link" href="{{route('booking')}}">
                     <i class="fas fa-group"></i>
                     <span class="nav-link-text"><b>Bookings</b></span>
                   </a>
