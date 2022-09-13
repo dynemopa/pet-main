@@ -74,6 +74,7 @@ class ListingController extends Controller
             'terms'=>'required',
 
         ]);
+      
         $file = file::find($file_id);
         $data=array();
 

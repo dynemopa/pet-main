@@ -18,28 +18,22 @@ class BookingController extends Controller
   }
   public function showbooking(Request $request)
   {  
-  
-    
+ 
     $request->validate( [
         'name' => 'required',
         'checkin'=>'required',
         'checkout'=>'required',
-        'rooms'=>'required',
         'guest'=>'required',
-        'email' =>'required', 
-        'phone' =>'required',
+        
     ]);
     
-
+   
    $booking=new booking();
+   $booking->files_id= $request['files_id'];
     $booking->name= $request['name'];
     $booking->checkin= $request['checkin'];
     $booking->checkout= $request['checkout'];
-    $booking->rooms= $request['rooms'];
     $booking->guest= $request['guest'];
-
-    $booking->phone= $request['phone'];
-    $booking->email= $request['email'];
     $booking->save();
     
     return back()->with('success', 'Your Data has been successfully added');
@@ -70,16 +64,13 @@ class BookingController extends Controller
   }
   public function updatebooking( Request $request, $id)
   {   
+   
     
     $booking=booking::find($id); 
     $booking->name= $request['name'];
     $booking->checkin= $request['checkin'];
     $booking->checkout= $request['checkout'];
-    $booking->rooms= $request['rooms'];
     $booking->guest= $request['guest'];
-
-    $booking->phone= $request['phone'];
-    $booking->email= $request['email'];
     $booking->update();
 
     return back()->with('success', 'Data Update successfully');

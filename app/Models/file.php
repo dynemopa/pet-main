@@ -20,4 +20,8 @@ class file extends Model
     {
         return $this->hasOne(title::class,'files_id' ,'files_id');
     }
+    public function booking()
+    {
+        return $this->hasOne(booking::class,'files_id' ,'files_id');
+    }
 }

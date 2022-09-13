@@ -12,9 +12,11 @@ class booking extends Model
         'name',
         'checkin',
         'checkout',
-        'rooms',
         'guest',
-        'email',
-        'phone',
+      
     ];
+    public function files()
+    {
+        return $this->belongTo(file::class);
+    }
 }

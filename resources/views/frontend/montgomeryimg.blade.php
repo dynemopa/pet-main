@@ -36,7 +36,7 @@
   
 
      @foreach ( $file as $value)
-  
+
      @php
      $sleeping_situation=json_decode($value->title->feacture->sleeping_situation);
      @endphp 
@@ -249,39 +249,53 @@
                             </div>
                 </div> 
                 @endforeach
-               
+              
                 <div class="col-md-4" style=" margin-top:10px"> 
                     <div class="d113" style="    background-color: #8b6013e0; padding: 11px;">
                         <center><p>USD 150 per night</p></center>
                     </div>
+                    <form action="{{url('/showbooking/')}}" method="get">
+                        @if(session('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div> 
+@endif
+                    @if (Auth::check())
                     <div style="  padding: 26px; background-color: #eaece3;">
                         <p >Book Now</p>
                         <div class="col-md-12">
-                         
-                            <div class="inputWithIcon">
-                                <input type="text" placeholder="Check-in"  id="checkindate" name="checkindate">
-                                <i class="fa fa-calendar fa-lg fa-fw" aria-hidden="true"></i>  
+
+                            <div class="form-group">
+                                <input class="form-control" type="hidden" name="files_id" value="{{$value->files_id}}"> 
+                            </div> 
+                            
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="name" id="name" placeholder="Name"> 
+                            </div> 
+                            <div class="col-md-12">
+                                <input class="form-control" name="checkin" onfocus="(this.type='date')" id="checkin" type="text" placeholder="Check In"> 
                             </div>
                         </div>
                         <div class="col-md-12">
-                         
-                            <div class="inputWithIcon">
-                                <input type="text" placeholder="Check-out"  id="checkoutdate" name="checkoutdate">
-                                <i class="fa fa-calendar fa-lg fa-fw" aria-hidden="true"></i>  
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="checkout"  onfocus="(this.type='date')" id="checkout"  placeholder="Check Out"> 
+                            </div>
+                        </div>
+                     
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="guest" id="guest" placeholder="Guest"> 
                             </div>
                         </div>
                         <div class="col-md-12">
-                         
-                            <div class="inputWithIcon">
-                                <input type="text" placeholder="Guests">
-                                <i class="fa  fa-user fa-lg fa-fw" aria-hidden="true"></i>  
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-primary" style="width: 100%">BOOK NOW</button>
+                            <button type="submit" class="submit-btn">Book Now</button>
                         </div>
 
                     </div>
+                    @else
+                   
+                    @endif
+                    </form>
                     <div style="  padding: 26px; background-color: #eaece3; margin-top:10px">
                         <p>Login</p>
                         @if (Auth::check())

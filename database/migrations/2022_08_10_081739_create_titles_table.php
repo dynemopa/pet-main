@@ -19,7 +19,6 @@ class CreateTitlesTable extends Migration
             $table->text('title');
             $table->text('content');
             $table->bigInteger('files_id')->unsigned();
-            
             $table->foreign('files_id')->references('files_id')->on('files');
             $table->timestamps();
         });

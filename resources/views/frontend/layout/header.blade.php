@@ -95,6 +95,12 @@
       </nav><!-- .navbar -->
 
     </div>
+    <script  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en',}, 'google_translate_element');
+  }
+  </script>
   </header>
 
 

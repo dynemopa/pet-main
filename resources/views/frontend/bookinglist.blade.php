@@ -5,7 +5,7 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="{{route('bookingadd')}}"> <button type="button" class="btn btn-success text-right">Add Booking</button></a>
+{{-- <a href="{{route('bookingadd')}}"> <button type="button" class="btn btn-success text-right">Add Booking</button></a> --}}
   <div class="header bg-primary pb-6">
     <div class="container-fluid">
       <div class="header-body">
@@ -60,8 +60,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Check-In</th>
                     <th scope="col">Check-Out</th>
-                    <th scope="col">email</th>
-                    <th scope="col">phone</th>
+                    <th scope="col">Guest</th>
                     <th scope="col">Action</th>
         
                 </tr>
@@ -72,8 +71,7 @@
                 <td>{{$value->name}}</td>
                 <td>{{$value->checkin}}</td>
                 <td>{{$value->checkout}}</td>
-                <td>{{$value->email}}</td>
-                <td>{{$value->phone}}</td>
+                <td>{{$value->guest}}</td>
                 <td>
                   <a href="{{url('allbooking/')}}/{{$value->id}}" class="text-white"> 
                     <span class="mr-2"><i class="fa fa-eye" aria-hidden="true"></i></span>

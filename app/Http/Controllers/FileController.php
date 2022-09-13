@@ -61,10 +61,6 @@ class FileController extends Controller
         $file= new file();
         $file->filenames=($data);
         $file->save();
-
-
-       
-
          $filesid = $file->files_id;
       
         
@@ -98,12 +94,7 @@ class FileController extends Controller
         $feacture->please_note= $request['please_note'];
         $feacture->amenities=json_encode($request->amenities);
         $feacture->terms=json_encode($request->terms);
-        
-
         $feacture->save();
-
-     
-        
          return back()->with('success', 'Your Data has been successfully added');
     }
     public function getSlub(Request $request)

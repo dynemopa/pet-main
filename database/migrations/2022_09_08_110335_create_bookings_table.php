@@ -18,10 +18,9 @@ class CreateBookingsTable extends Migration
             $table->text('name');
             $table->date('checkin');
             $table->date('checkout');
-            $table->text('rooms');
             $table->text('guest');
-            $table->text('email');
-            $table->text('phone');
+            $table->bigInteger('files_id')->unsigned();
+            $table->foreign('files_id')->references('files_id')->on('files');
             $table->timestamps();
         });
     }

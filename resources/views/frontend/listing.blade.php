@@ -83,7 +83,7 @@
           
           <div class="form-group">
             <label for="">address</label>
-            <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}"required ><br>
+            <input type="text" class="form-control" id="address" name="address"  ><br>
               <span style="color: red">@error('address'){{$message}}@enderror</span>
           </div>
           <div class="form-group">
@@ -546,7 +546,21 @@
       
     });
   </script>
+   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWiV-hsLeWGphGFSkPT3kdGqJU8JgNYuUlibraries=places"></script>
 
+  <script src="jquery.geocomplete.js"></script>
+  <script>
+    $(document).ready(function(){
+      var autocomplete;
+      var to='address';
+      autocomplete=new google.maps.places.Autocomplete((document.getElementById(to)),{
+        types:['geocode'],
+      });
+
+
+    });
+   </script>
+  
 </body>
 </html>
     
