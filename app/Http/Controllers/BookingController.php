@@ -18,11 +18,13 @@ class BookingController extends Controller
   }
   public function showbooking(Request $request)
   {  
+   
+   
  
     $request->validate( [
         'name' => 'required',
-        'checkin'=>'required',
-        'checkout'=>'required',
+        'checkin'=>'required|after_or_equal:today',
+        'checkout'=>'required|after_or_equal:today',
         'guest'=>'required',
         
     ]);
@@ -48,7 +50,15 @@ class BookingController extends Controller
     }
     else
     {
-        $booking=booking::all();
+       //$booking=file::with(['title','title.feacture','booking'])->get();
+       //dd( $booking);
+      //  $booking=file::with( ['title','title.feacture','booking'])->wherehas('title.feacture',function ($query) 
+      //  {
+      //   $query->where('','=','12');
+      //  })->get();
+
+         $booking=booking::with('files.title.feacture')->get();
+        
     }
     return view('frontend.bookinglist',compact('booking','search'));
   }

@@ -50,13 +50,14 @@
         </div>
     @endif
   
-    
+
    
           <div class="table-responsive">
             <table class="table align-items-center table-dark table-flush">
               <thead class="thead-dark">
                 <tr>
-                    
+                  <th scope="col">address</th>
+                  <th scope="col">Rooms</th>
                     <th scope="col">Name</th>
                     <th scope="col">Check-In</th>
                     <th scope="col">Check-Out</th>
@@ -66,8 +67,10 @@
                 </tr>
               </thead>
               @foreach ( $booking as $value)
+       
               <tbody class="list">
-               
+                <td>{{$value->files->title->feacture->address}}</td>
+                <td>{{$value->files->title->feacture->room}}</td>
                 <td>{{$value->name}}</td>
                 <td>{{$value->checkin}}</td>
                 <td>{{$value->checkout}}</td>

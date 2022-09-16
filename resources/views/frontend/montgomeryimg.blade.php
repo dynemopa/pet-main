@@ -256,11 +256,12 @@
                     </div>
                     <form action="{{url('/showbooking/')}}" method="get">
                         @if(session('success'))
-<div class="alert alert-success">
-  {{ session('success') }}
-</div> 
-@endif
-                    @if (Auth::check())
+                            <div class="alert alert-success">
+                            {{ session('success') }}
+                            </div> 
+                        @endif
+                           
+                  
                     <div style="  padding: 26px; background-color: #eaece3;">
                         <p >Book Now</p>
                         <div class="col-md-12">
@@ -271,29 +272,52 @@
                             
                             <div class="form-group">
                                 <input class="form-control" type="text" name="name" id="name" placeholder="Name"> 
+                                <span class="text-danger">
+                                    @error('name')
+                                    {{$message}}
+                                    @enderror 
+                                </span>
                             </div> 
                             <div class="col-md-12">
-                                <input class="form-control" name="checkin" onfocus="(this.type='date')" id="checkin" type="text" placeholder="Check In"> 
+                                <input class="form-control" name="checkin" onfocus="(this.type='date')" id="checkin" type="text" placeholder="Check In">
+                                <span class="text-danger">
+                                    @error('checkin')
+                                    {{$message}}
+                                    @enderror
+                                 </span>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="checkout"  onfocus="(this.type='date')" id="checkout"  placeholder="Check Out"> 
+                                <span class="text-danger">
+                                    @error('checkout')
+                                    {{$message}}
+                                    @enderror 
+                                </span>
                             </div>
                         </div>
                      
                         <div class="col-md-12">
                             <div class="form-group">
                                 <input class="form-control" type="text" name="guest" id="guest" placeholder="Guest"> 
+                                <span class="text-danger">
+                                    @error('guest')
+                                    {{$message}}
+                                    @enderror 
+                                </span>
                             </div>
                         </div>
+                        @if (Auth::check())
                         <div class="col-md-12">
-                            <button type="submit" class="submit-btn">Book Now</button>
+                            <button type="submit" class="btn btn-primary" style="width: 100%">Book Now</button>
                         </div>
 
                     </div>
                     @else
-                   
+                    <div class="col-md-12">
+                    <button type="button" class="btn btn-info" style="width: 100%">  <a href="{{route('login')}}" >Book Now</a></button>
+                    </div>
                     @endif
                     </form>
                     <div style="  padding: 26px; background-color: #eaece3; margin-top:10px">

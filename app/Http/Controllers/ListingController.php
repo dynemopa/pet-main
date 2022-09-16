@@ -17,6 +17,7 @@ class ListingController extends Controller
     public function showlisting()
     {
         $file=file::with(['title','title.feacture'])->paginate(3);
+        
         return view('frontend.showlisting',compact('file'));
      }
     public function listdelete( Request $request , $files_id,$title_id,$feacture_id)

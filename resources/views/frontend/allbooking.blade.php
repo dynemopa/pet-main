@@ -18,4 +18,8 @@
         <label for="exampleInputPassword1">Guests</label>
         <input class="form-control" type="text"  value="{{$booking->guest}}" readonly> 
     </div>
+    {{-- <div class="form-group">
+      <label for="exampleInputPassword1">address</label>
+      <input class="form-control" type="text"  value="{{$booking->guest}}" readonly> 
+  </div> --}}
 @endsection

@@ -17,6 +17,6 @@ class booking extends Model
     ];
     public function files()
     {
-        return $this->belongTo(file::class);
+        return $this->belongsTo(file::class, 'files_id', 'files_id');
     }
 }

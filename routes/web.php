@@ -105,6 +105,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::get('/listedit/{files_id}/{title_id}/{feacture_id}',[ListingController::class,'listedit'])->name('listedit');
 	Route::post('/updatelist/{files_id}/{title_id}/{feacture_id}',[ListingController::class,'updatelist'])->name('updatelist');
 	Route::get('/showlist/{file_id}',[ListingController::class,'showlist'])->name('showlist');
+	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // });
 

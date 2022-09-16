@@ -138,7 +138,7 @@
                     <div class="dropdown-divider"></div>
                     
 
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="return confirm('Are you sure?');"  >
                       <i class="ni ni-user-run"></i>
                       <span>Logout</span>
                     </a>
@@ -183,7 +183,18 @@
           {
             height: 400
           });
+
+          
         });
+
+      //  function logout(){
+      // var logout= confirm('Are you sure?');
+      // if(logout)
+      // {
+      //   event.preventDefault(); document.getElementById('logout-form').submit();
+      // }
+      
+      //   }
       </script>
 
       <script>

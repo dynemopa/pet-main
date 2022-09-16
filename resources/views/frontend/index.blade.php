@@ -119,7 +119,7 @@
                 </div>
 
                 <div class="col-md-11" style="margin-top:-32px; margin-left:15px;">
-                  <input style="width: 90%;" class="form-control d53" list="browsers" name="myBrowser" placeholder="Birmingham & Montgomery" >
+                  <input style="width: 90%;" class="form-control d53" list="browsers" name="city" placeholder="Birmingham & Montgomery" >
                   <datalist id="browsers">
                     <option value="Birmingham">Birmingham</option>
                     <option value="Montgomery">Montgomery</option>
@@ -141,7 +141,7 @@
                 </div>
 
                 <div class="col-md-10" style="margin-top:-39px; margin-left:15px;">
-                  <input type="text" id="checkindate" name="checkindate" class="form-control d53" placeholder="Check In" style="padding: 5px;">
+                  <input type="text" id="checkindate" name="checkin" class="form-control d53" placeholder="Check In" style="padding: 5px;">
                 </div>
               </div>
             </div>
@@ -155,7 +155,7 @@
                 </div>
 
                 <div class="col-md-10" style="margin-top:-39px; margin-left:15px;">
-                  <input type="text" id="checkoutdate" name="checkoutdate" class="form-control d53" placeholder="Check Out" style="padding: 5px;">
+                  <input type="text" id="checkoutdate" name="checkout" class="form-control d53" placeholder="Check Out" style="padding: 5px;">
                 </div>
               </div>
             </div>
@@ -168,7 +168,7 @@
                 </div>
                 <div class="col-md-10" style="margin-top:-15px; margin-left:15px;">Guests
                     <button onclick="decrement()" class="d5"><span style="font-size: 30px">-</span></button>
-                    <input style="width: 31%" id=demoInput class=" d55"  type=number min=1 max=10 >
+                    <input style="width: 31%" name="guest" id=demoInput class=" d55"  type=number min=1 max=10 >
                     <button onclick="increment()" class="d5" >+</button>
                     
                 </div>

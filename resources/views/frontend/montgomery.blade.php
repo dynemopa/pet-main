@@ -51,14 +51,14 @@
           <div class="row">
             <div class="col-md-8">
               <div class="inputWithIcon">
-                <input type="text" placeholder="Where do You want  to go ?">
+                <input type="text" name="city" id="city" placeholder="Where do You want  to go ?">
                
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="inputWithIcon">
-                <input type="text" placeholder="Check-in"  id="checkindate" name="checkindate">
+                <input type="text" placeholder="Check-in"  id="checkindate" name="checkin">
            
               </div>
             </div>
@@ -67,15 +67,14 @@
           <div class="row">
             <div class="col-md-4">
               <div class="inputWithIcon">
-                <input type="text" placeholder="check-out"  id="checkoutdate" name="checkoutdate">
+                <input type="text" placeholder="check-out"  id="checkoutdate" name="checkout">
               
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="inputWithIcon">
-                <input type="text" placeholder="Guests">
-                 
+                <input type="text" name="guest" id="guest" placeholder="Guests">
               </div>
             </div>
 
@@ -169,6 +168,7 @@
              
             </div>
           </div>
+          @php $place = "Montgomery"; @endphp 
           <div class="col-md-2"> <button class="btn btn-success">Search</button></div>
           <div class="col-md-2" style="    margin-top: -41px;margin-left: 300px;">  <a href="{{url('/montgomery')}}/{{$place}}">
             <button class="btn btn-success" type="button">Reset</button>
