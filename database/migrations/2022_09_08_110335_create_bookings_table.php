@@ -14,13 +14,13 @@ class CreateBookingsTable extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->id('id');
+            $table->id('bookings_id');
             $table->text('name');
             $table->date('checkin');
             $table->date('checkout');
             $table->text('guest');
-            $table->bigInteger('files_id')->unsigned();
-            $table->foreign('files_id')->references('files_id')->on('files');
+            $table->bigInteger('feacture_id')->unsigned();
+            $table->foreign('feacture_id')->references('feacture_id')->on('feactures');
             $table->timestamps();
         });
     }

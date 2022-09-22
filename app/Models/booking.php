@@ -15,8 +15,8 @@ class booking extends Model
         'guest',
       
     ];
-    public function files()
+    public function feacture()
     {
-        return $this->belongsTo(file::class, 'files_id', 'files_id');
+        return $this->belongTo(feacture::class);
     }
 }

@@ -19,7 +19,7 @@ class BookingController extends Controller
   public function showbooking(Request $request)
   {  
    
-   
+ 
  
     $request->validate( [
         'name' => 'required',
@@ -28,16 +28,17 @@ class BookingController extends Controller
         'guest'=>'required',
         
     ]);
-    
+   
+ 
    
    $booking=new booking();
-   $booking->files_id= $request['files_id'];
+    $booking->feacture_id= $request['feacture_id'];
     $booking->name= $request['name'];
     $booking->checkin= $request['checkin'];
     $booking->checkout= $request['checkout'];
     $booking->guest= $request['guest'];
     $booking->save();
-    
+   
     return back()->with('success', 'Your Data has been successfully added');
   }
 

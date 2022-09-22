@@ -17,12 +17,13 @@ class FileController extends Controller
     }
     public function store(Request $request)
     {
+       
      
         $request->validate( [
             'filenames' => 'required',
             'filenames.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title'=>'required|max:255|min:10',
-            'slug'=>'required|unique:feacture',
+            'slug'=>'required|unique:titles',
             'content'=>'required',
             'price_per_night'=>'required|between:0,99.99',
             'cleaning_fee'=>'required',
@@ -43,9 +44,9 @@ class FileController extends Controller
             'terms'=>'required',
 
         ]);
-    
+
   
-       
+    
         if($request->hasfile('filenames'))
         {
 
@@ -63,7 +64,7 @@ class FileController extends Controller
         $file->save();
          $filesid = $file->files_id;
       
-        
+   
         $title = new title();
         $input = $request->all();
         $title->title= $request['title'];
@@ -95,6 +96,7 @@ class FileController extends Controller
         $feacture->amenities=json_encode($request->amenities);
         $feacture->terms=json_encode($request->terms);
         $feacture->save();
+    
          return back()->with('success', 'Your Data has been successfully added');
     }
     public function getSlub(Request $request)

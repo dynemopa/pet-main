@@ -261,13 +261,13 @@
                             </div> 
                         @endif
                            
-                  
-                    <div style="  padding: 26px; background-color: #eaece3;">
+                
+                        <div style="  padding: 26px; background-color: #eaece3;">
                         <p >Book Now</p>
                         <div class="col-md-12">
 
                             <div class="form-group">
-                                <input class="form-control" type="hidden" name="files_id" value="{{$value->files_id}}"> 
+                                <input class="form-control" type="hidden" name="feacture_id" value="{{$value->title->feacture->feacture_id}}"> 
                             </div> 
                             
                             <div class="form-group">
@@ -313,12 +313,12 @@
                             <button type="submit" class="btn btn-primary" style="width: 100%">Book Now</button>
                         </div>
 
-                    </div>
-                    @else
-                    <div class="col-md-12">
-                    <button type="button" class="btn btn-info" style="width: 100%">  <a href="{{route('login')}}" >Book Now</a></button>
-                    </div>
-                    @endif
+                        </div>
+                        @else
+                        <div class="col-md-12">
+                        <button type="button" class="btn btn-info" style="width: 100%">  <a href="{{route('login')}}" >Book Now</a></button>
+                        </div>
+                        @endif
                     </form>
                     <div style="  padding: 26px; background-color: #eaece3; margin-top:10px">
                         <p>Login</p>
@@ -417,7 +417,7 @@ window.initMap = initMap;
                    
                    
                   <div class="card mb-4 box-shadow d411 " >
-                    <a href="{{url('/montgomeryimg')}}/{{$place}}-{{$value1->files_id}}-{{$value1->title->title}}"> <img style=" height: 233px;" class="card-img-top d411" src="{{asset('uploads/students/'.$str[0])}}"></a><p style="color: white; margin-top: -39px;  margin-left: 10px;">USD {{$value1->title->feacture->price_per_night}} /night</p>
+                    <a href="{{url('/montgomeryimg')}}/{{$place}}-{{$value->title->slug}}"> <img style=" height: 233px;" class="card-img-top d411" src="{{asset('uploads/students/'.$str[0])}}"></a><p style="color: white; margin-top: -39px;  margin-left: 10px;">USD {{$value1->title->feacture->price_per_night}} /night</p>
                     <div class="card-body d412" >
                       <p class="card-text  d49" >{{$value1->title->title}}</p>
                        <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">{{$value1->title->feacture->address}}</div>

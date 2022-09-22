@@ -14,7 +14,7 @@ class CreateFeacturesTable extends Migration
     public function up()
     {
         Schema::create('feactures', function (Blueprint $table) {
-            $table->id('id');
+            $table->id('feacture_id');
             $table->string('price_per_night');
             $table->string('cleaning_fee');
             $table->string('sleeping_situation');

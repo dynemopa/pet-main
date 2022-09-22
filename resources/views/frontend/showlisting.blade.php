@@ -6,6 +6,7 @@
 
 @section('content')
 <a href="{{route('listing')}}"> <button type="button" class="btn btn-success text-right">Add List</button></a>
+<button type="button" onclick="window.print()" class="btn btn-success text-right">Print</button>
   <div class="header bg-primary pb-6">
     <div class="container-fluid">
       <div class="header-body">

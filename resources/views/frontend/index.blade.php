@@ -1,5 +1,6 @@
 @extends('frontend.layout.main')
 @section('content')
+
 <style>
   body {margin:0;height:2000px;}
   

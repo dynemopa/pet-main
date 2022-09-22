@@ -16,7 +16,7 @@ class MontgomeryimgController extends Controller
 {
     public function index($place,$slug)
     {
-       
+    
  
         //  $file = file::with( ['title','title.feacture'])->wherehas('title.feacture',function ($query) use ($title)
         //    {
@@ -29,7 +29,7 @@ class MontgomeryimgController extends Controller
            {
             $query->where('city','=',$place);
            })->take(3)->get();
-          
+        
         $userid = Auth::user();
         $file = file::with( ['title','title.feacture'])->wherehas('title.feacture',function ($query) use ($slug)
         {

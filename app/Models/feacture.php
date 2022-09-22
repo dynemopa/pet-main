@@ -28,14 +28,13 @@ class feacture extends Model
         'amenities',
         'terms',
     ];
+    protected $primaryKey = 'feacture_id';
     public function product()
     {
         return $this->belongTo(title::class);
     }
-
-    // public function title()
-    // {
-    //     return $this->hasOne(title::class,'title_id','title_id');
-    // }
-   
+    public function booking()
+    {
+        return $this->hasOne(booking::class,'feacture_id' ,'feacture_id');
+    }
 }
