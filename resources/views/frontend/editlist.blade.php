@@ -6,6 +6,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <html lang="en">
 <head>
   <title>Laravel 8 Multiple Image Upload Real Programmer</title>
@@ -34,22 +35,22 @@
     </div> 
     @endif
 
-    @foreach ( $file as $value)
+    @foreach ( $title as $value)
 
         @php
-        $sleeping_situation=json_decode($value->title->feacture->sleeping_situation);
+        $sleeping_situation=json_decode($value->feacture->sleeping_situation);
         @endphp 
          @php
-         $amenities=json_decode($value->title->feacture->amenities);
+         $amenities=json_decode($value->feacture->amenities);
          
          @endphp 
           @php
-          $terms=json_decode($value->title->feacture->terms);
+          $terms=json_decode($value->feacture->terms);
          
           @endphp 
 
         @php 
-        $str1  = str_replace("[","",$value->filenames);
+        $str1  = str_replace("[","",$value->file->filenames);
         $str2  = str_replace("]","",$str1);
         $str3  = str_replace('"','',$str2);
         $str = explode(",",$str3);
@@ -58,7 +59,7 @@
 
    
    
-     <form  method="post"  action=" {{url('/updatelist/')}}/{{$value->files_id}}/{{$value->title->title_id}}/{{$value->title->feacture->id}}"   enctype="multipart/form-data">
+     <form  method="post"  action=" {{url('/updatelist/')}}/{{$value->title_id}}/{{$value->file->files_id}}/{{$value->feacture->feacture_id}}"   enctype="multipart/form-data">
        
         @csrf
        
@@ -80,23 +81,23 @@
 
         <div class="form-group">
             <label for="">title</label>
-            <input id="title"  class="form-control"  name="title"value="{{$value->title->title}}">
+            <input id="title"  class="form-control"  name="title"value="{{$value->title}}">
         </div>
         <div class="form-group">
             <label for="">Slug</label>
-            <input id="slug"  class="form-control"  name="slug"value="{{$value->title->slug}}" readonly>
+            <input id="slug"  class="form-control"  name="slug"value="{{$value->slug}}" readonly>
         </div>
         <div class="form-group">
                 <label for="">Content</label>
-                <textarea  class="form-control" name="content" rows="4" cols="50" id="content"  >{!!$value ->title->content!!}</textarea>
+                <textarea  class="form-control" name="content" rows="4" cols="50" id="content"  >{!!$value ->content!!}</textarea>
         </div>
         <div class="form-group">
             <label for="">Price Per Night</label>
-            <input type="number" class="form-control" name="price_per_night" id="price_per_night" value="{{$value->title->feacture->price_per_night}}" >
+            <input type="number" class="form-control" name="price_per_night" id="price_per_night" value="{{$value->price_per_night}}" >
         </div>
         <div class="form-group">
             <label for="">Cleaning Fee</label>
-            <input type="number" class="form-control"name="cleaning_fee" id="cleaning_fee" value="{{$value->title->feacture->cleaning_fee}}" >
+            <input type="number" class="form-control"name="cleaning_fee" id="cleaning_fee" value="{{$value->feacture->cleaning_fee}}" >
         </div>
         <div class="form-group">
             <label for="">Sleeping Situation</label><br><br>
@@ -107,77 +108,77 @@
         </div>
         <div class="form-group">
             <label for="">address</label>
-            <input type="text" class="form-control" name="address" id="title"value="{{$value->title->feacture->address}}" >
+            <input type="text" class="form-control" name="address" id="title"value="{{$value->feacture->address}}" >
         </div>
         <div class="form-group">
             <label for="">area</label>
-            <input type="text" class="form-control" name="area" id="title"value="{{$value->title->feacture->area}}" >
+            <input type="text" class="form-control" name="area" id="title"value="{{$value->feacture->area}}" >
         </div>
         <div class="form-group">
             <label for="">state</label>
-            <input type="text" class="form-control" name="state" id="state"value="{{$value->title->feacture->state}}" >
+            <input type="text" class="form-control" name="state" id="state"value="{{$value->feacture->state}}" >
         </div>
         <div class="form-group">
             <label for="">country</label>
-            <input type="text" class="form-control" name="country" id="country"value="{{$value->title->feacture->country}}" >
+            <input type="text" class="form-control" name="country" id="country"value="{{$value->feacture->country}}" >
         </div>
         <div class="form-group">
             <label for="">city</label>
-            <input type="text" class="form-control" name="city" id="title"value="{{$value->title->feacture->city}}" >
+            <input type="text" class="form-control" name="city" id="title"value="{{$value->city}}" >
         </div>
         <div class="form-group">
             <label for="">zip</label>
-            <input type="number" class="form-control" name="zip" id="zip"value="{{$value->title->feacture->zip}}" >
+            <input type="number" class="form-control" name="zip" id="zip"value="{{$value->feacture->zip}}" >
         </div>
         <div class="form-group">
             <label for="">property_id</label>
-            <input type="number" class="form-control" name="property_id" id="property_id"value="{{$value->title->feacture->property_id}}" >
+            <input type="number" class="form-control" name="property_id" id="property_id"value="{{$value->property_id}}" >
         </div>
        
         <div class="form-group">
             <label>Room</label><br/>
             <select name="room" id="room" class="form-control">
                 <option value="">Rooms</option>
-                <option value="1"{{($value->title->feacture->room === '1') ? 'Selected' : ''}}>1</option>
-                <option value="2"{{($value->title->feacture->room === '2') ? 'Selected' : ''}}>2</option>
-                <option value="3"{{($value->title->feacture->room === '3') ? 'Selected' : ''}}>3</option>
-                <option value="4"{{($value->title->feacture->room === '4') ? 'Selected' : ''}}>4</option>
-                <option value="5"{{($value->title->feacture->room === '5') ? 'Selected' : ''}}>5</option>
-                <option value="6"{{($value->title->feacture->room === '6') ? 'Selected' : ''}}>6</option>
+                <option value="1"{{($value->feacture->room === '1') ? 'Selected' : ''}}>1</option>
+                <option value="2"{{($value->feacture->room === '2') ? 'Selected' : ''}}>2</option>
+                <option value="3"{{($value->feacture->room === '3') ? 'Selected' : ''}}>3</option>
+                <option value="4"{{($value->feacture->room === '4') ? 'Selected' : ''}}>4</option>
+                <option value="5"{{($value->feacture->room === '5') ? 'Selected' : ''}}>5</option>
+                <option value="6"{{($value->feacture->room === '6') ? 'Selected' : ''}}>6</option>
               </select>
           </div>
           <div class="form-group">
             <label for="">Bathrooms</label>
             <select name="bathrooms" id="bathrooms" class="form-control">
               <option value="">Bathrooms</option>
-              <option value="1"{{($value->title->feacture->bathrooms === '1') ? 'Selected' : ''}}>1</option>
-              <option value="2"{{($value->title->feacture->bathrooms === '2') ? 'Selected' : ''}}>2</option>
-              <option value="3"{{($value->title->feacture->bathrooms === '3') ? 'Selected' : ''}}>3</option>
-              <option value="4"{{($value->title->feacture->bathrooms === '4') ? 'Selected' : ''}}>4</option>
-              <option value="5"{{($value->title->feacture->bathrooms === '5') ? 'Selected' : ''}}>5</option>
-              <option value="6"{{($value->title->feacture->bathrooms === '6') ? 'Selected' : ''}}>6</option>
+              <option value="1"{{($value->feacture->bathrooms === '1') ? 'Selected' : ''}}>1</option>
+              <option value="2"{{($value->feacture->bathrooms === '2') ? 'Selected' : ''}}>2</option>
+              <option value="3"{{($value->feacture->bathrooms === '3') ? 'Selected' : ''}}>3</option>
+              <option value="4"{{($value->feacture->bathrooms === '4') ? 'Selected' : ''}}>4</option>
+              <option value="5"{{($value->feacture->bathrooms === '5') ? 'Selected' : ''}}>5</option>
+              <option value="6"{{($value->feacture->bathrooms === '6') ? 'Selected' : ''}}>6</option>
             </select>
         </div>
         <div class="form-group">
             <label for="">property_size</label>
-            <input type="text" class="form-control" name="property_size" id="property_size"value="{{$value->title->feacture->property_size}}" >
+            <input type="text" class="form-control" name="property_size" id="property_size"value="{{$value->feacture->property_size}}" >
         </div>
         <div class="form-group">
             <label for="">Bedrooms:</label>
             <select name="bedrooms" id="bedrooms" class="form-control">
               <option value="">Bedrooms</option>
-              <option value="1"{{($value->title->feacture->bedrooms === '1') ? 'Selected' : ''}}>1</option>
-              <option value="2"{{($value->title->feacture->bedrooms === '2') ? 'Selected' : ''}}>2</option>
-              <option value="3"{{($value->title->feacture->bedrooms === '3') ? 'Selected' : ''}}>3</option>
-              <option value="4"{{($value->title->feacture->bedrooms === '4') ? 'Selected' : ''}}>4</option>
-              <option value="5"{{($value->title->feacture->bedrooms === '5') ? 'Selected' : ''}}>5</option>
-              <option value="6"{{($value->title->feacture->bedrooms === '6') ? 'Selected' : ''}}>6</option>
+              <option value="1"{{($value->feacture->bedrooms === '1') ? 'Selected' : ''}}>1</option>
+              <option value="2"{{($value->feacture->bedrooms === '2') ? 'Selected' : ''}}>2</option>
+              <option value="3"{{($value->feacture->bedrooms === '3') ? 'Selected' : ''}}>3</option>
+              <option value="4"{{($value->feacture->bedrooms === '4') ? 'Selected' : ''}}>4</option>
+              <option value="5"{{($value->feacture->bedrooms === '5') ? 'Selected' : ''}}>5</option>
+              <option value="6"{{($value->feacture->bedrooms === '6') ? 'Selected' : ''}}>6</option>
             </select>
             
         </div>
         <div class="form-group">
             <label for="">please_note</label>
-            <textarea type="text" class="form-control" name="please_note" id="please_note" >{{$value->title->feacture->please_note}}</textarea>
+            <textarea type="text" class="form-control" name="please_note" id="please_note" >{{$value->feacture->please_note}}</textarea>
         </div>
         <div class="col-md-12">
             <label for="">amenities and Features</label><br>

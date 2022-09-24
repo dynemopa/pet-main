@@ -15,15 +15,17 @@ class CreateTitlesTable extends Migration
     {
         Schema::create('titles', function (Blueprint $table) {
             $table->id('title_id');
-            $table->text('slug');
             $table->text('title');
+            $table->text('slug');
             $table->text('content');
-            $table->bigInteger('files_id')->unsigned();
-            $table->foreign('files_id')->references('files_id')->on('files');
+            $table->text('price_per_night');
+            $table->text('property_id');
+            $table->text('city');
             $table->timestamps();
         });
     }
-
+ 
+   
     /**
      * Reverse the migrations.
      *

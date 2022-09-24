@@ -5,20 +5,20 @@
 
 
 
-        @foreach ( $file as $value)
+        @foreach ( $title as $value)
         @php
-        $sleeping_situation=json_decode($value->title->feacture->sleeping_situation);
+        $sleeping_situation=json_decode($value->feacture->sleeping_situation);
         @endphp 
          @php
-         $amenities=json_decode($value->title->feacture->amenities);
+         $amenities=json_decode($value->feacture->amenities);
          
          @endphp 
           @php
-          $terms=json_decode($value->title->feacture->terms);
+          $terms=json_decode($value->feacture->terms);
          
           @endphp 
         @php 
-            $str1  = str_replace("[","",$value->filenames);
+            $str1  = str_replace("[","",$value->file->filenames);
             $str2  = str_replace("]","",$str1);
             $str3  = str_replace('"','',$str2);
             $str = explode(",",$str3);
@@ -37,19 +37,19 @@
        
             <div class="form-group">
               <label for="">Title</label>
-              <input type="text" class="form-control" id="title"value="{{$value->title->title}}" readonly>
+              <input type="text" class="form-control" id="title"value="{{$value->title}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">Content</label>
-                <textarea class="form-control" id="content" name="content001" rows="4" cols="50" readonly >{{$value->title->content}}</textarea><br>
+                <textarea class="form-control" id="content" name="content001" rows="4" cols="50" readonly >{{$value->content}}</textarea><br>
             </div>
             <div class="form-group">
                 <label for="">Price Per Night</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->price_per_night}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->price_per_night}}" readonly>
             </div>
             <div class="form-group">
-                <label for="">Price Per Night</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->cleaning_fee}}" readonly>
+                <label for="">cleaning_fee</label>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->cleaning_fee}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">Sleeping Situation</label><br><br>
@@ -61,51 +61,51 @@
             </div>
             <div class="form-group">
                 <label for="">address</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->address}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->address}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">area</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->area}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->area}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">state</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->state}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->state}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">country</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->country}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->country}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">city</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->city}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->city}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">zip</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->zip}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->zip}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">property_id</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->property_id}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->property_id}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">room</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->room}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->room}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">bathrooms</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->bathrooms}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->bathrooms}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">property_size</label>
-                <input type="text" class="form-control" id="title"value="{{$value->title->feacture->property_size}}" readonly>
+                <input type="text" class="form-control" id="title"value="{{$value->feacture->property_size}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">bedrooms</label>
-                <input type="text" class="form-control" id="bedrooms"value="{{$value->title->feacture->bedrooms}}" readonly>
+                <input type="text" class="form-control" id="bedrooms"value="{{$value->feacture->bedrooms}}" readonly>
             </div>
             <div class="form-group">
                 <label for="">please_note</label>
-                <textarea type="text" class="form-control" id="please_note001"  readonly>{{$value->title->feacture->please_note}}</textarea>
+                <textarea type="text" class="form-control" id="please_note001"  readonly>{{$value->feacture->please_note}}</textarea>
             </div>
             <div class="col-md-12">
                 <label for="">amenities and Features</label><br>

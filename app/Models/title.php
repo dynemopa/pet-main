@@ -13,9 +13,12 @@ class title extends Model
     use HasFactory,Sluggable;
   
     protected $fillable = [
-       
+        
         'title',
+        'price_per_night',
         'content',
+        'property_id',
+        'city',
     ];
     protected $primaryKey = 'title_id';
   
@@ -23,9 +26,13 @@ class title extends Model
     {
         return $this->hasOne(feacture::class,'title_id' ,'title_id');
     }
-    public function files()
+    public function file()
     {
-        return $this->belongTo(file::class);
+        return $this->hasOne(file::class,'title_id','title_id');
+    }
+    public function booking()
+    {
+        return $this->hasOne(booking::class,'title_id','title_id');
     }
     public function sluggable(): array
     {

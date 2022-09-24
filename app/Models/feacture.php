@@ -10,16 +10,14 @@ class feacture extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'price_per_night',
+       
         'cleaning_fee',
         'sleeping_situation',
         'address',
         'area',
         'state',
         'country',
-        'city',
         'zip',
-        'property_id',
         'room',
         'bathrooms',
         'property_size',
@@ -29,12 +27,8 @@ class feacture extends Model
         'terms',
     ];
     protected $primaryKey = 'feacture_id';
-    public function product()
+    public function feacture()
     {
-        return $this->belongTo(title::class);
-    }
-    public function booking()
-    {
-        return $this->hasOne(booking::class,'feacture_id' ,'feacture_id');
+        return $this->belongsTo(title::class);
     }
 }

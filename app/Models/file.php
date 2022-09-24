@@ -16,12 +16,8 @@ class file extends Model
     {
         $this->attributes['filenames'] = json_encode($value);
     }
-    public function title()
+    public function file()
     {
-        return $this->hasOne(title::class,'files_id' ,'files_id');
+        return $this->belongsTo(title::class);
     }
-    // public function booking()
-    // {
-    //     return $this->hasOne(booking::class,'files_id' ,'files_id');
-    // }
 }

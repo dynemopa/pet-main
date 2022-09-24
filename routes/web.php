@@ -43,7 +43,7 @@ Route::get('/news' ,[NewsController::class,'index']);
 Route::get('/blog' ,[BlogControllaer::class,'index']);
 Route::get('/about' ,[AboutController::class,'index']);
 Route::get('/support' ,[SupportController::class,'index']);
-Route::get('/gallery/{file_id}',[GalleryController::class,'gallery'])->name('gallery');
+Route::get('/gallery/{title_id}',[GalleryController::class,'gallery'])->name('gallery');
 // ContactController
 Route::get('/contect' ,[ContactController::class,'index']);
 Route::get('/dashboard' ,[ContactController::class,'dashboard']);
@@ -101,10 +101,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	// ListingController
 	Route::get('/listing',[ListingController::class,'listing'])->name('listing');
 	Route::get('/showlisting/',[ListingController::class,'showlisting'])->name('showlisting');
-	Route::get('/listdelete/{file_id}/{title_id}/{feacture_id}',[ListingController::class,'listdelete'])->name('listdelete');
-	Route::get('/listedit/{files_id}/{title_id}/{feacture_id}',[ListingController::class,'listedit'])->name('listedit');
-	Route::post('/updatelist/{files_id}/{title_id}/{feacture_id}',[ListingController::class,'updatelist'])->name('updatelist');
-	Route::get('/showlist/{file_id}',[ListingController::class,'showlist'])->name('showlist');
+	Route::get('/listdelete/{title_id}/{file_id}/{feacture_id}',[ListingController::class,'listdelete'])->name('listdelete');
+
+
+	Route::get('/listedit/{title_id}/{files_id}/{feacture_id}',[ListingController::class,'listedit'])->name('listedit');
+
+	Route::get('/showlist/{title_id}',[ListingController::class,'showlist'])->name('showlist');
+	Route::post('/updatelist/{title_id}/{files_id}/{feacture_id}',[ListingController::class,'updatelist'])->name('updatelist');
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // });

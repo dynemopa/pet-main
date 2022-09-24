@@ -15,14 +15,12 @@ class CreateFeacturesTable extends Migration
     {
         Schema::create('feactures', function (Blueprint $table) {
             $table->id('feacture_id');
-            $table->string('price_per_night');
             $table->string('cleaning_fee');
             $table->string('sleeping_situation');
             $table->string('address');
             $table->string('area');
             $table->string('state');
             $table->string('country');
-            $table->string('city');
             $table->string('zip');
             $table->string('property_id');
             $table->string('room');
@@ -37,7 +35,7 @@ class CreateFeacturesTable extends Migration
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

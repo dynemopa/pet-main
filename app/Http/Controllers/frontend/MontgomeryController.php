@@ -13,6 +13,7 @@ class MontgomeryController extends Controller
 {
     public function index(Request $request,$place)
     {
+       
         if($request!="")
         {
             $city=$request['city']?? "";
@@ -23,13 +24,35 @@ class MontgomeryController extends Controller
             $bathrooms=$request['bathrooms']?? "";
             $room=$request['room']?? "";
 
-            $file = file::with( ['title','title.feacture.booking'])->wherehas('title.feacture',function ($query) use($place,$bedrooms,$bathrooms)
-            {
-                
-                $query->where('city','=',$place);
-            })->get();
+            $title=title::with(['file','feacture','booking'])
+            ->when($checkin, function($query) use($checkin){
+                $query->whereHas('booking', function($query) use($checkin) {
+                    $query->where('checkin', '=',$checkin);
+                });
+            })
+            ->when($guest, function($query) use($guest){
+                $query->whereHas('booking', function($query) use($guest) {
+                    $query->where('guest', '=',$guest);
+                });
+            })->when($checkout, function($query) use($checkout){
+                $query->whereHas('booking', function($query) use($checkout) {
+                    $query->where('checkout', '=',$checkout);
+                });
+            })->when($bedrooms, function($query) use($bedrooms){
+                $query->whereHas('feacture', function($query) use($bedrooms) {
+                    $query->where('bedrooms', '=',$bedrooms);
+                });
+            })->when($bathrooms, function($query) use($bathrooms){
+                $query->whereHas('feacture', function($query) use($bathrooms) {
+                    $query->where('bathrooms', '=',$bathrooms);
+                });
+            })->when($room, function($query) use($room){
+                $query->whereHas('feacture', function($query) use($room) {
+                    $query->where('room', '=',$room);
+                });
+            })->where('city','=',$place)->get();
+           
         }
-      
-        return view('frontend.montgomery',compact('file','place'));
+        return view('frontend.montgomery',compact('title','place'));
     }
 }

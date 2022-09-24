@@ -35,22 +35,22 @@
     </style>
   
 
-     @foreach ( $file as $value)
+     @foreach ( $title as $value)
 
      @php
-     $sleeping_situation=json_decode($value->title->feacture->sleeping_situation);
+     $sleeping_situation=json_decode($value->feacture->sleeping_situation);
      @endphp 
       @php
-      $amenities=json_decode($value->title->feacture->amenities);
+      $amenities=json_decode($value->feacture->amenities);
       
       @endphp 
        @php
-       $terms=json_decode($value->title->feacture->terms);
+       $terms=json_decode($value->feacture->terms);
       
        @endphp 
     
         @php 
-        $str1  = str_replace("[","",$value->filenames);
+        $str1  = str_replace("[","",$value->file->filenames);
         $str2  = str_replace("]","",$str1);
         $str3  = str_replace('"','',$str2);
         $str = explode(",",$str3);
@@ -62,9 +62,7 @@
 <div class="container-fluid " style="margin-top: 66px">
     <div class="col-md-12">
         <div class="row">
-            {{-- @for ($x = 0; $x < count($str); $x++) --}}
-           
-          {{-- @endfor --}}
+        
             <div class="col-md-6"> <img src="{{asset('uploads/students/'.$str[0])}}" style=" width:100%; height:100%"/></div>
             <div class="col-md-6">
                 <div class="row">
@@ -74,7 +72,7 @@
                 </div>
                 <div class="row" style=" margin-top: 10px;">
                     <div class="col-md-6"><img src="{{asset('uploads/students/'.$str[3])}}" style=" width:100%;height:100%"/></div>
-                    <div class="col-md-6">  <a href="{{url('/gallery/')}}/{{$value->files_id}}"><img class="demo" src="{{asset('uploads/students/'.$str[4])}}" style=" width:100%;height:100%;cursor: pointer;"/><p style="color: white; margin-top: -119px;  margin-left: 98px; color:black; font-size:20px"><b>See All Image</b></p></a></div>
+                    <div class="col-md-6">  <a href="{{url('/gallery/')}}/{{$value->title_id}}"><img class="demo" src="{{asset('uploads/students/'.$str[4])}}" style=" width:100%;height:100%;cursor: pointer;"/><p style="color: white; margin-top: -119px;  margin-left: 98px; color:black; font-size:20px"><b>See All Image</b></p></a></div>
 
                 </div>
             </div>
@@ -85,15 +83,15 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-8">
-                    <p class="d113" style="font-size: 22px">{{$value->title->title}}</p>
+                    <p class="d113" style="font-size: 22px">{{$value->title}}</p>
                     <p class="d113" ><span><i class="fa fa-home" aria-hidden="true"></i></span>&nbsp; <a href="{{url('/montgomery')}}">Private room</a> &nbsp;&nbsp; <span>&nbsp;<i class="fa fa-building" aria-hidden="true"></i></span> &nbsp;<a href="{{url('/montgomery')}}">Apartment</a> &nbsp;&nbsp;<span>&nbsp;<i class="fa fa-user" aria-hidden="true"></i> &nbsp;8 Guests&nbsp;&nbsp;<span>&nbsp;<i class="fa fa-bed" aria-hidden="true"></i></span>&nbsp;1 Bedroom</p>
-                    <p class="d113" style="font-size: 15px">{!!$value->title->content!!}</p>
+                    <p class="d113" style="font-size: 15px">{!!$value->content!!}</p>
                     <div class=" shadow-sm p-3 mb-5  rounded d114 " >
                         <p>Property Price</p>
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-6"><p style=" font-size:13px; "><b>Price per night:</b> USD {{$value->title->feacture->price_per_night}}</p></div>
-                                <div class="col-md-6"><p style=" font-size:13px; "><b>Cleaning Fee:</b> USD {{$value->title->feacture->cleaning_fee}} Single Fee</p></div>
+                                <div class="col-md-6"><p style=" font-size:13px; "><b>Price per night:</b> USD {{$value->price_per_night}}</p></div>
+                                <div class="col-md-6"><p style=" font-size:13px; "><b>Cleaning Fee:</b> USD {{$value->feacture->cleaning_fee}} Single Fee</p></div>
 
                             </div>
                         </div>
@@ -120,15 +118,15 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p style=" font-size:13px; ">Address: {{$value->title->feacture->address}}</p>
-                                    <p style=" font-size:13px; ">Area: {{$value->title->feacture->area}}</p>
-                                    <p style=" font-size:13px; ">State:{{$value->title->feacture->state}}</p>
-                                    <p style=" font-size:13px; ">Country: {{$value->title->feacture->country}}</p>
+                                    <p style=" font-size:13px; ">Address: {{$value->feacture->address}}</p>
+                                    <p style=" font-size:13px; ">Area: {{$value->feacture->area}}</p>
+                                    <p style=" font-size:13px; ">State:{{$value->feacture->state}}</p>
+                                    <p style=" font-size:13px; ">Country: {{$value->feacture->country}}</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p style=" font-size:13px; ">City:{{$value->title->feacture->city}}</p>
-                                    <p style=" font-size:13px; ">County:{{$value->title->feacture->country}}</p>
-                                    <p style=" font-size:13px; ">Zip:{{$value->title->feacture->zip}}</p>
+                                    <p style=" font-size:13px; ">City:{{$value->city}}</p>
+                                    <p style=" font-size:13px; ">County:{{$value->feacture->country}}</p>
+                                    <p style=" font-size:13px; ">Zip:{{$value->feacture->zip}}</p>
                                 </div>
                             </div>
                         </div>
@@ -138,14 +136,14 @@
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <p style=" font-size:13px; ">Property ID:{{$value->title->feacture->property_id}}</p>
-                                            <p style=" font-size:13px; ">Rooms: {{$value->title->feacture->room}}</p>
-                                            <p style=" font-size:13px; ">Bathrooms: {{$value->title->feacture->bathrooms}}</p>
+                                            <p style=" font-size:13px; ">Property ID:{{$value->property_id}}</p>
+                                            <p style=" font-size:13px; ">Rooms: {{$value->feacture->room}}</p>
+                                            <p style=" font-size:13px; ">Bathrooms: {{$value->feacture->bathrooms}}</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p style=" font-size:13px; ">Property Size:{{$value->title->feacture->property_size}} ft2</p>
-                                            <p style=" font-size:13px; ">Bedrooms: {{$value->title->feacture->bedrooms}}</p>
-                                            <p style=" font-size:13px; ">Please Note:{{$value->title->feacture->please_note}}</p>
+                                            <p style=" font-size:13px; ">Property Size:{{$value->feacture->property_size}} ft2</p>
+                                            <p style=" font-size:13px; ">Bedrooms: {{$value->feacture->bedrooms}}</p>
+                                            <p style=" font-size:13px; ">Please Note:{{$value->feacture->please_note}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -248,6 +246,7 @@
                                 </div>
                             </div>
                 </div> 
+              
                 @endforeach
               
                 <div class="col-md-4" style=" margin-top:10px"> 
@@ -267,7 +266,7 @@
                         <div class="col-md-12">
 
                             <div class="form-group">
-                                <input class="form-control" type="hidden" name="feacture_id" value="{{$value->title->feacture->feacture_id}}"> 
+                                <input class="form-control" type="hidden" name="title_id" value="{{$value->title_id}}"> 
                             </div> 
                             
                             <div class="form-group">
@@ -369,7 +368,7 @@ function initMap() {
    
    
    
-        '<img src="https://media-cdn.tripadvisor.com/media/photo-s/17/b9/78/91/capital-o-3539-hotel.jpg" alt="Girl in a jacket" width="210" height="157">'
+        '<img src="https://media-cdn.tripadvisor.com/media/photo-s/17/b9/78/91/capital-o-3539-hotel.jpg" alt="Girl in a jacket" width="300px" height="157">'
    
 
   const infowindow = new google.maps.InfoWindow({
@@ -405,9 +404,9 @@ window.initMap = initMap;
         <div class="col-md-12 m-4">
            
             <div class="row">
-                @foreach($file1 as $value1)
+                @foreach($title1 as $value1)
                 @php 
-                $str1  = str_replace("[","",$value1->filenames);
+                $str1  = str_replace("[","",$value1->file->filenames);
                 $str2  = str_replace("]","",$str1);
                 $str3  = str_replace('"','',$str2);
                 $str = explode(",",$str3);
@@ -417,10 +416,10 @@ window.initMap = initMap;
                    
                    
                   <div class="card mb-4 box-shadow d411 " >
-                    <a href="{{url('/montgomeryimg')}}/{{$place}}-{{$value->title->slug}}"> <img style=" height: 233px;" class="card-img-top d411" src="{{asset('uploads/students/'.$str[0])}}"></a><p style="color: white; margin-top: -39px;  margin-left: 10px;">USD {{$value1->title->feacture->price_per_night}} /night</p>
+                    <a href="{{url('/montgomeryimg')}}/{{$place}}-{{$value->slug}}"> <img style=" height: 233px;" class="card-img-top d411" src="{{asset('uploads/students/'.$str[0])}}"></a><p style="color: white; margin-top: -39px;  margin-left: 10px;">USD {{$value1->price_per_night}} /night</p>
                     <div class="card-body d412" >
-                      <p class="card-text  d49" >{{$value1->title->title}}</p>
-                       <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">{{$value1->title->feacture->address}}</div>
+                      <p class="card-text  d49" >{{$value1->title}}</p>
+                       <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">{{$value1->feacture->address}}</div>
                        <i class="fa fa-home" aria-hidden="true"></i>
                        <div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Apartment / Private room</div>
                      

@@ -5,6 +5,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <a href="{{route('listing')}}"> <button type="button" class="btn btn-success text-right">Add List</button></a>
 <button type="button" onclick="window.print()" class="btn btn-success text-right">Print</button>
   <div class="header bg-primary pb-6">
@@ -43,7 +44,7 @@
               <thead class="thead-dark">
                 <tr>
                     
-                    <th scope="col">imag</th>
+                    <th scope="col">image</th>
                     <th scope="col">title</th>
                     <th scope="col">slug</th>
                     <th scope="col">content</th>
@@ -58,13 +59,15 @@
                   
                   
                       <tr>
-                
-                        @foreach ( $file as $value)
+                     
+                        @foreach ( $title as $value)
                          @php 
-                          $str1  = str_replace("[","",$value->filenames);
+                          $str1  = str_replace("[","",$value->file->filenames);
                           $str2  = str_replace("]","",$str1);
                           $str3  = str_replace('"','',$str2);
                           $str = explode(",",$str3);
+                          
+                         
                         @endphp
                         
                     
@@ -73,32 +76,31 @@
                             <img src="{{asset('uploads/students/'.$str[0])}}" style="height:50px; width:50px"/>
                          
                         </td>
-                   
-
-
-                        <td>{{$value->title->title}}</td>
-                        <td>{{$value->title->slug}}</td>
-                       <td> {!!Str::limit($value->title->content,30)!!}</td>
-                        <td>{{$value->title->feacture->price_per_night}}</td>
-                        <td>{{$value->title->feacture->address}}</td>
-
+                        <td>{{$value->title}}</td>
+                        <td>{{$value->slug}}</td>
+                       <td> {!!Str::limit($value->content,30)!!}</td>
+                        <td>{{$value->price_per_night}}</td>
+                        <td>{{$value->feacture->address}}</td>
+                      
                         <td>
-                          <a href="{{url('showlist/')}}/{{$value->files_id}}" class="text-white"> 
+                          
+                          <a href="{{url('showlist/')}}/{{$value->title_id}}" class="text-white"> 
                             <span class="mr-2"><i class="fa fa-eye" aria-hidden="true"></i></span>
                           </a>
-
-                         <a href="{{url('listedit/')}}/{{$value->files_id}}/{{$value->title->title_id}}/{{$value->title->feacture->id}}"   class="text-white"> 
+                         
+                         <a href="{{url('listedit/')}}/{{$value->title_id}}/{{$value->file->files_id}}/{{$value->feacture->feacture_id}}"   class="text-white"> 
                             <span class="mr-2"><i class="fa fa-edit" title="View User"></i></span>
-                          
-
                           </a>
-                          <a data-toggle="modal" data-target="#exampleModal{{$value->files_id}}{{$value->title->title_id}}{{$value->title->feacture->id}}" > 
+                       
+                          <a data-toggle="modal" data-target="#exampleModal{{$value->title_id}}{{$value->file->files_id}}{{$value->feacture->feacture_id}}" > 
                             <span class="mr-2"><i class="fa fa-trash" aria-hidden="true"></i></span>
                           </a>
+                         
+                        </td>
 
-                          <div class="modal fade" id="exampleModal{{$value->files_id}}{{$value->title->title_id}}{{$value->title->feacture->id}}" tabindex="-1" role="dialog"  aria-hidden="true">
+                          <div class="modal fade" id="exampleModal{{$value->title_id}}{{$value->file->files_id}}{{$value->feacture->feacture_id}}" tabindex="-1" role="dialog"  aria-hidden="true">
                             
-                            <form  action="{{url('listdelete/')}}/{{$value->files_id}}/{{$value->title->title_id}}/{{$value->title->feacture->id}}"  method="get">
+                            <form  action="{{url('listdelete/')}}/{{$value->title_id}}/{{$value->file->files_id}}/{{$value->feacture->feacture_id}}"  method="get">
                                
                               {{ csrf_field() }}
                               <div class="modal-dialog" role="document">
@@ -136,7 +138,7 @@
             </table>
           </div>
             <div class="row" style=" margin-top:30px; ">
-              {{$file->links()}}
+              {{$title->links()}}
             </div>
             <style>
               .w-5

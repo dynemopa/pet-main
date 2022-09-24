@@ -16,11 +16,13 @@ class ListingController extends Controller
     }
     public function showlisting()
     {
-        $file=file::with(['title','title.feacture'])->paginate(3);
-        
-        return view('frontend.showlisting',compact('file'));
+       
+        $title=title::with(['file','feacture'])->paginate(3);
+      
+ 
+        return view('frontend.showlisting',compact('title'));
      }
-    public function listdelete( Request $request , $files_id,$title_id,$feacture_id)
+    public function listdelete( Request $request ,$title_id,$files_id,$feacture_id)
     {
         
         if( $request->text1!='delete')
@@ -29,32 +31,34 @@ class ListingController extends Controller
          }
          else
         {
-            $feacture=feacture::where('id','=',$feacture_id)->delete();
-            $title=title::where('title_id','=',$title_id)->delete();
+            $feacture=feacture::where('feacture_id','=',$feacture_id)->delete();
             $file=file::where('files_id','=',$files_id)->delete();
+            $title=title::where('title_id','=',$title_id)->delete();
             return back()->with('status', 'Data Deleted successfully');
         }
        
    
        
     }
-    public function showlist($file_id)
+    public function showlist($title_id)
     {
-        $file=file::with('title','title.feacture')->where('files_id','=',$file_id)->get();
-        return view('frontend.showall',compact('file'));
+        
+        $title=title::with('file','feacture')->where('title_id','=',$title_id)->get();
+        
+        return view('frontend.showall',compact('title'));
      }
-    public function listedit( $files_id,$title_id,$feacture_id)
+    public function listedit($title_id,$files_id,$feacture_id)
     {
-        $file=file::with('title','title.feacture')->where('files_id','=',$files_id)->get();
-
-        return view('frontend.editlist',compact('file'));
+        $title=title::with('file','feacture')->where('title_id','=',$title_id)->get();
+        return view('frontend.editlist',compact('title'));
     }
-    public function updatelist(Request $request,$file_id,$title_id,$feacture_id )
+    public function updatelist(Request $request,$title_id,$file_id,$feacture_id )
     {
+      
         $request->validate( [
            
             'title'=>'required|max:255|min:10',
-            'slug'=>'required|unique:feacture',
+            'slug'=>'required',
             'content'=>'required',
             'price_per_night'=>'required|between:0,99.99',
             'cleaning_fee'=>'required',
@@ -75,6 +79,15 @@ class ListingController extends Controller
             'terms'=>'required',
 
         ]);
+        
+        $title=title::find($title_id);
+        $title->title= $request['title'];
+        $title->price_per_night= $request['price_per_night'];
+        $title->content= $request['content'];
+        $title->property_id=$request['property_id'];
+        $title->city= $request['city'];
+        $title->save();
+        $titleid = $title->title_id;
       
         $file = file::find($file_id);
         $data=array();
@@ -95,28 +108,19 @@ class ListingController extends Controller
        }
         $file = file::find($file_id);
         $file->filenames=($data);
-        $filesid=$file->files_id;
+        $file->title_id=$titleid;
         $file->save();
-        $filesid=$file->files_id;
-        $title=title::find($title_id);
-        $title->title= $request['title'];
-        $title->slug= $request['slug'];
-        $title->content= $request['content'];
-        $title->files_id=$filesid;
-        $title->save();
-        $titleid = $title->title_id;
+        
+
         $feacture=feacture::find($feacture_id);
         $feacture->title_id=$titleid;
-        $feacture->price_per_night= $request['price_per_night'];
         $feacture->cleaning_fee= $request['cleaning_fee'];
         $feacture->sleeping_situation=json_encode($request->sleeping_situation);
         $feacture->address= $request['address'];
         $feacture->area= $request['area'];
         $feacture->state= $request['state'];
         $feacture->country= $request['country'];
-        $feacture->city= $request['city'];
         $feacture->zip= $request['zip'];
-        $feacture->property_id= $request['property_id'];
         $feacture->room= $request['room'];
         $feacture->bathrooms= $request['bathrooms'];
         $feacture->property_size= $request['property_size'];
@@ -125,6 +129,7 @@ class ListingController extends Controller
         $feacture->amenities=json_encode($request->amenities);
         $feacture->terms=json_encode($request->terms);
         $feacture->save();
+ 
          return back()->with('success', 'Your Data Updated successfully ');
     }
 }

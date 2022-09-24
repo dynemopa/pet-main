@@ -98,11 +98,12 @@ img {
   opacity: 1;
 }
 </style>
+
 <body style="background-color: black">
-    
-    @foreach ($file as $value)
+  
+    @foreach ($title as $value)
     @php 
-        $str1  = str_replace("[","",$value->filenames);
+        $str1  = str_replace("[","",$value->file->filenames);
         $str2  = str_replace("]","",$str1);
         $str3  = str_replace('"','',$str2);
         $str = explode(",",$str3);

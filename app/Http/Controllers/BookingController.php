@@ -18,7 +18,7 @@ class BookingController extends Controller
   }
   public function showbooking(Request $request)
   {  
-   
+
  
  
     $request->validate( [
@@ -32,7 +32,7 @@ class BookingController extends Controller
  
    
    $booking=new booking();
-    $booking->feacture_id= $request['feacture_id'];
+    $booking->title_id= $request['title_id'];
     $booking->name= $request['name'];
     $booking->checkin= $request['checkin'];
     $booking->checkout= $request['checkout'];

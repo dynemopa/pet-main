@@ -1,6 +1,7 @@
 @extends('frontend.layout.main')
 
 @section('content')
+
 <style>
   #rangeValue {
   position: relative;
@@ -180,23 +181,23 @@
           <section>
             <p>Listings in "Montgomery"</p>
       
-            @foreach ( $file as $value)
+            @foreach ( $title as $value)
            
             @php 
-            $str1  = str_replace("[","",$value->filenames);
+            $str1  = str_replace("[","",$value->file->filenames);
             $str2  = str_replace("]","",$str1);
             $str3  = str_replace('"','',$str2);
             $str = explode(",",$str3);
           @endphp
             <div class="col-md-12">
               <div class="row d111">
-                <div class="col-md-4"><a href="{{url('/montgomeryimg')}}/{{$place}}-{{$value->title->slug}}"><img src="{{asset('uploads/students/'.$str[0])}}" height="100%"  width="100%" class="d11"/></a><p style="color: white; margin-top: -39px;  margin-left: 10px;">USD {{$value->title->feacture->price_per_night}} /night</p></div>
+                <div class="col-md-4"><a href="{{url('/montgomeryimg')}}/{{$place}}-{{$value->slug}}"><img src="{{asset('uploads/students/'.$str[0])}}" height="100%"  width="100%" class="d11"/></a><p style="color: white; margin-top: -39px;  margin-left: 10px;">USD {{$value->price_per_night}} /night</p></div>
                 
                 <div class="col-md-8">
-                  <p class="d113"><a href="{{url('/montgomeryimg')}}/{{$value->title->slug}}">{{$value->title->title}}</a></p>
-                  <p class="d112" style="color: gray"> {!!Str::limit($value->title->content, 70)!!}</p>
+                  <p class="d113"><a href="{{url('/montgomeryimg')}}/{{$place}}-{{$value->slug}}">{{$value->title}}</a></p>
+                  <p class="d112" style="color: gray"> {!!Str::limit($value->content, 70)!!}</p>
                  
-                  <p class="d112"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;{{$value->title->feacture->address}}</p>
+                  <p class="d112"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;{{$value->feacture->address}}</p>
                   <p class="d112"><i class="fa fa-home" aria-hidden="true"></i> &nbsp;Apartment / Private room</p>
                 </div>
               </div>

@@ -19,8 +19,8 @@ class CreateBookingsTable extends Migration
             $table->date('checkin');
             $table->date('checkout');
             $table->text('guest');
-            $table->bigInteger('feacture_id')->unsigned();
-            $table->foreign('feacture_id')->references('feacture_id')->on('feactures');
+            $table->bigInteger('title_id')->unsigned();
+            $table->foreign('title_id')->references('title_id')->on('titles');
             $table->timestamps();
         });
     }

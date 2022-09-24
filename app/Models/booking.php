@@ -15,8 +15,8 @@ class booking extends Model
         'guest',
       
     ];
-    public function feacture()
+    public function booking()
     {
-        return $this->belongTo(feacture::class);
+        return $this->belongsTo(title::class);
     }
 }

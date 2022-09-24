@@ -18,7 +18,7 @@ class FileController extends Controller
     public function store(Request $request)
     {
        
-     
+   
         $request->validate( [
             'filenames' => 'required',
             'filenames.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -44,8 +44,16 @@ class FileController extends Controller
             'terms'=>'required',
 
         ]);
-
-  
+       
+        $title = new title();
+        $input = $request->all();
+        $title->title= $request['title'];
+        $title->price_per_night= $request['price_per_night'];
+        $title->content= $request['content'];
+        $title->property_id=$request['property_id'];
+        $title->city= $request['city'];
+        $title->save();
+        $titleid = $title->title_id;
     
         if($request->hasfile('filenames'))
         {
@@ -61,33 +69,18 @@ class FileController extends Controller
         
         $file= new file();
         $file->filenames=($data);
+        $file->title_id=$titleid;
         $file->save();
-         $filesid = $file->files_id;
-      
-   
-        $title = new title();
-        $input = $request->all();
-        $title->title= $request['title'];
-        $title->content= $request['content'];
-        $title->files_id=$filesid;
-        $title->save();
-        $titleid = $title->title_id;
         
-       
-       
-
         $feacture = new feacture();
         $feacture->title_id=$titleid;
-        $feacture->price_per_night= $request['price_per_night'];
         $feacture->cleaning_fee= $request['cleaning_fee'];
         $feacture->sleeping_situation=json_encode($request->sleeping_situation);
         $feacture->address= $request['address'];
         $feacture->area= $request['area'];
         $feacture->state= $request['state'];
         $feacture->country= $request['country'];
-        $feacture->city= $request['city'];
         $feacture->zip= $request['zip'];
-        $feacture->property_id= $request['property_id'];
         $feacture->room= $request['room'];
         $feacture->bathrooms= $request['bathrooms'];
         $feacture->property_size= $request['property_size'];
@@ -96,7 +89,7 @@ class FileController extends Controller
         $feacture->amenities=json_encode($request->amenities);
         $feacture->terms=json_encode($request->terms);
         $feacture->save();
-    
+  
          return back()->with('success', 'Your Data has been successfully added');
     }
     public function getSlub(Request $request)
