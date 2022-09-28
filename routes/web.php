@@ -39,7 +39,7 @@ use App\Http\Controllers\BookingController;
 */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('welcome');
 Route::get('/service' ,[ServiceController::class,'index']);
-Route::get('/news' ,[NewsController::class,'index']);
+ 
 Route::get('/blog' ,[BlogControllaer::class,'index']);
 Route::get('/about' ,[AboutController::class,'index']);
 Route::get('/support' ,[SupportController::class,'index']);

@@ -17,8 +17,6 @@ class FileController extends Controller
     }
     public function store(Request $request)
     {
-       
-   
         $request->validate( [
             'filenames' => 'required',
             'filenames.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -44,17 +42,13 @@ class FileController extends Controller
             'terms'=>'required',
 
         ]);
-       
-        $title = new title();
-        $input = $request->all();
-        $title->title= $request['title'];
-        $title->price_per_night= $request['price_per_night'];
-        $title->content= $request['content'];
+        $title = title::make();
+        $title->title = $request['title'];
+        $title->price_per_night = $request['price_per_night'];
+        $title->content = $request['content'];
         $title->property_id=$request['property_id'];
         $title->city= $request['city'];
         $title->save();
-        $titleid = $title->title_id;
-    
         if($request->hasfile('filenames'))
         {
 
@@ -69,11 +63,9 @@ class FileController extends Controller
         
         $file= new file();
         $file->filenames=($data);
-        $file->title_id=$titleid;
-        $file->save();
-        
+   
+        $title->file()->save($file);
         $feacture = new feacture();
-        $feacture->title_id=$titleid;
         $feacture->cleaning_fee= $request['cleaning_fee'];
         $feacture->sleeping_situation=json_encode($request->sleeping_situation);
         $feacture->address= $request['address'];
@@ -88,7 +80,7 @@ class FileController extends Controller
         $feacture->please_note= $request['please_note'];
         $feacture->amenities=json_encode($request->amenities);
         $feacture->terms=json_encode($request->terms);
-        $feacture->save();
+        $title->feacture()->save($feacture);
   
          return back()->with('success', 'Your Data has been successfully added');
     }
