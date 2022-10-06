@@ -8,6 +8,7 @@ class NewsController extends Controller
 {
     public function index()
     {
+        
         $shareComponent = \Share::page(
             'https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/',
             'Your share text comes here',

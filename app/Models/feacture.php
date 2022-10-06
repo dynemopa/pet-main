@@ -26,7 +26,7 @@ class feacture extends Model
         'amenities',
         'terms',
     ];
-    protected $primaryKey = 'feacture_id';
+    protected $primaryKey = 'id';
     public function feacture()
     {
         return $this->belongsTo(title::class);

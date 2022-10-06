@@ -13,10 +13,10 @@ use Illuminate\support\DB;
 
 class GalleryController extends Controller
 {
-    public function gallery($title_id)
+    public function gallery($id)
     {
      
-        $title=title::with('file','feacture')->where('title_id','=',$title_id)->get();
+        $title=title::with('file','feacture')->where('id','=',$id)->get();
         return  view('frontend.gallery', compact('title'));
         
      

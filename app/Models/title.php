@@ -20,19 +20,19 @@ class title extends Model
         'property_id',
         'city',
     ];
-    protected $primaryKey = 'title_id';
+
   
     public function feacture()
     {
-        return $this->hasOne(feacture::class,'title_id' ,'title_id');
+        return $this->hasOne(feacture::class,'title_id' ,'id');
     }
     public function file()
     {
-        return $this->hasOne(file::class,'title_id','title_id');
+        return $this->hasOne(file::class,'title_id','id');
     }
     public function booking()
     {
-        return $this->hasOne(booking::class,'title_id','title_id');
+        return $this->hasMany(booking::class,'title_id','id');
     }
     public function sluggable(): array
     {

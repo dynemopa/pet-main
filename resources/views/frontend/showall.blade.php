@@ -18,15 +18,13 @@
          
           @endphp 
         @php 
+        
             $str1  = str_replace("[","",$value->file->filenames);
             $str2  = str_replace("]","",$str1);
             $str3  = str_replace('"','',$str2);
             $str = explode(",",$str3);
+          
         @endphp
-         
-
-       
-
             <div class="form-group">
                 <label for="">Image</label><br>
                 @for ($x = 0; $x < count($str); $x++)

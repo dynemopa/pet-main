@@ -27,6 +27,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Paymentcontroller;
 use App\Http\Controllers\CovidController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CustomizationControoler;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,8 +40,16 @@ use App\Http\Controllers\BookingController;
 */
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('welcome');
 Route::get('/service' ,[ServiceController::class,'index']);
- 
+Route::get('/page',[CustomizationControoler::class,'page'])->name('page');
+Route::get('/front_page',[CustomizationControoler::class,'index'])->name('front_page');
+Route::get('/showvideo/{id}',[CustomizationControoler::class,'showvideo'])->name('showvideo');
+Route::get('/deletevideo/{id}',[CustomizationControoler::class,'deletevideo'])->name('deletevideo');
+Route::post('uploadVideo',[CustomizationControoler::class,'uploadVideo']);
+Route::get('/show_front/{id}',[CustomizationControoler::class,'show_front'])->name('show_front');
+
+
 Route::get('/blog' ,[BlogControllaer::class,'index']);
+Route::get('/news' ,[NewsController::class,'index']);
 Route::get('/about' ,[AboutController::class,'index']);
 Route::get('/support' ,[SupportController::class,'index']);
 Route::get('/gallery/{title_id}',[GalleryController::class,'gallery'])->name('gallery');
@@ -93,7 +102,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	// BookingController
 	Route::get('/booking',[BookingController::class,'index'])->name('booking');
 	Route::get('/bookingadd',[BookingController::class,'add'])->name('bookingadd');
-	Route::get('showbooking',[BookingController::class,'showbooking'])->name('showbooking');
+	Route::get('showbooking/{id}',[BookingController::class,'showbooking'])->name('showbooking');
 	Route::get('/allbooking/{id}',[BookingController::class,'allbooking'])->name('allbooking');
 	Route::get('/editbooking/{id}',[BookingController::class,'editbooking'])->name('editbooking');
 	Route::get('/updatebooking/{id}',[BookingController::class,'updatebooking'])->name('updatebooking');
@@ -104,7 +113,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 	Route::get('/listdelete/{title_id}/{file_id}/{feacture_id}',[ListingController::class,'listdelete'])->name('listdelete');
 
 
-	Route::get('/listedit/{title_id}/{files_id}/{feacture_id}',[ListingController::class,'listedit'])->name('listedit');
+	Route::get('/listedit/{id}/{files_id}/{feacture_id}',[ListingController::class,'listedit'])->name('listedit');
 
 	Route::get('/showlist/{title_id}',[ListingController::class,'showlist'])->name('showlist');
 	Route::post('/updatelist/{title_id}/{files_id}/{feacture_id}',[ListingController::class,'updatelist'])->name('updatelist');

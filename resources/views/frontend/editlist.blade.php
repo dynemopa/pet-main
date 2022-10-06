@@ -59,7 +59,7 @@
 
    
    
-     <form  method="post"  action=" {{url('/updatelist/')}}/{{$value->title_id}}/{{$value->file->files_id}}/{{$value->feacture->feacture_id}}"   enctype="multipart/form-data">
+     <form  method="post"  action=" {{url('/updatelist/')}}/{{$value->id}}/{{$value->file->id}}/{{$value->feacture->id}}"   enctype="multipart/form-data">
        
         @csrf
        

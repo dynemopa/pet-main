@@ -61,6 +61,12 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="{{route('page')}}">
+                    <i class="fas fa-group"></i>
+                    <span class="nav-link-text"><b>customization</b></span>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{route('payment')}}">
                     <i class="fas fa-group"></i>
                     <span class="nav-link-text"><b>Payment</b></span>

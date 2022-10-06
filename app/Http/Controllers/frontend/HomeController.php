@@ -13,6 +13,7 @@ class HomeController extends Controller
 {
    public function index()
    {
+      
       $file1 = file::with( ['title','title.feacture'])->wherehas('title.feacture',function ($query) use ($place)
       {
        $query->where('address','=',$place);

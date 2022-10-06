@@ -63,8 +63,8 @@ class FileController extends Controller
         
         $file= new file();
         $file->filenames=($data);
-   
         $title->file()->save($file);
+        
         $feacture = new feacture();
         $feacture->cleaning_fee= $request['cleaning_fee'];
         $feacture->sleeping_situation=json_encode($request->sleeping_situation);

@@ -16,11 +16,8 @@ class BookingController extends Controller
   {    
     return view('frontend.booking');
   }
-  public function showbooking(Request $request)
-  {  
-
- 
- 
+  public function showbooking(Request $request,$id)
+  { 
     $request->validate( [
         'name' => 'required',
         'checkin'=>'required|after_or_equal:today',
@@ -28,26 +25,26 @@ class BookingController extends Controller
         'guest'=>'required',
         
     ]);
-   
- 
-   
-   $booking=new booking();
-    $booking->title_id= $request['title_id'];
+
+    $booking=new booking();
+    $booking->id= $request['id'];
     $booking->name= $request['name'];
     $booking->checkin= $request['checkin'];
     $booking->checkout= $request['checkout'];
     $booking->guest= $request['guest'];
-    $booking->save();
+    $booking->title_id= $id;
    
+    $booking->save();
+  
     return back()->with('success', 'Your Data has been successfully added');
   }
 
   public function index( Request $request)
-  {    
+  {   
     $search=$request['search']?? "";
     if($search !="")
     {
-        $booking=booking::where('name','LIKE',"%$search%")->orwhere('email','LIKE',"%$search%")->get();
+        $booking=booking::where('guest','LIKE',$search)->get();
     }
     else
     {
@@ -57,25 +54,26 @@ class BookingController extends Controller
       //  {
       //   $query->where('','=','12');
       //  })->get();
-
-         $booking=booking::with('files.title.feacture')->get();
-        
+         $booking=booking::all();
+       
     }
+
     return view('frontend.bookinglist',compact('booking','search'));
   }
   public function allbooking($id)
-  {    
-  $booking=booking::find($id);
+  {   
+
+  $booking=booking::where('id','=',$id)->get();
+
     return view('frontend.allbooking',compact('booking'));
   }
   public function editbooking($id)
-  {   
-    $booking=booking::find($id); 
+  { 
+    $booking=booking::find($id);
     return view('frontend.editbooking',compact('booking'));
   }
   public function updatebooking( Request $request, $id)
-  {   
-   
+  {
     
     $booking=booking::find($id); 
     $booking->name= $request['name'];
@@ -83,7 +81,7 @@ class BookingController extends Controller
     $booking->checkout= $request['checkout'];
     $booking->guest= $request['guest'];
     $booking->update();
-
+ 
     return back()->with('success', 'Data Update successfully');
   }
   public function deletebooking( Request $request, $id)

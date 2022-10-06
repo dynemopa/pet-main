@@ -18,11 +18,12 @@ class ListingController extends Controller
     {
        
         $title=title::with(['file','feacture'])->paginate(3);
+    
       
  
         return view('frontend.showlisting',compact('title'));
      }
-    public function listdelete( Request $request ,$title_id,$files_id,$feacture_id)
+    public function listdelete( Request $request ,$id,$files_id,$feacture_id)
     {
         
         if( $request->text1!='delete')
@@ -31,30 +32,30 @@ class ListingController extends Controller
          }
          else
         {
-            $feacture=feacture::where('feacture_id','=',$feacture_id)->delete();
-            $file=file::where('files_id','=',$files_id)->delete();
-            $title=title::where('title_id','=',$title_id)->delete();
+            $feacture=feacture::where('id','=',$feacture_id)->delete();
+            $file=file::where('id','=',$files_id)->delete();
+            $title=title::where('id','=',$id)->delete();
             return back()->with('status', 'Data Deleted successfully');
         }
        
    
        
     }
-    public function showlist($title_id)
+    public function showlist($id)
     {
         
-        $title=title::with('file','feacture')->where('title_id','=',$title_id)->get();
+        $title=title::with('file','feacture')->where('id','=',$id)->get();
         
         return view('frontend.showall',compact('title'));
      }
-    public function listedit($title_id,$files_id,$feacture_id)
+    public function listedit($id,$files_id,$feacture_id)
     {
-        $title=title::with('file','feacture')->where('title_id','=',$title_id)->get();
+        $title=title::with('file','feacture')->where('id','=',$id)->get();
         return view('frontend.editlist',compact('title'));
     }
-    public function updatelist(Request $request,$title_id,$file_id,$feacture_id )
+    public function updatelist(Request $request,$id,$file_id,$feacture_id )
     {
-      
+       
         $request->validate( [
            
             'title'=>'required|max:255|min:10',
@@ -80,15 +81,15 @@ class ListingController extends Controller
 
         ]);
         
-        $title=title::find($title_id);
+        $title=title::find($id);
+         
         $title->title= $request['title'];
         $title->price_per_night= $request['price_per_night'];
         $title->content= $request['content'];
         $title->property_id=$request['property_id'];
         $title->city= $request['city'];
         $title->save();
-        $titleid = $title->title_id;
-      
+        $titleid = $title->id;
         $file = file::find($file_id);
         $data=array();
 
@@ -101,16 +102,16 @@ class ListingController extends Controller
                $image->move('uploads/students/', $filenames);
                $data[] = $filenames;  
            }
+          
         }
+
        else
        {
         $data=$file->filenames;  
        }
-        $file = file::find($file_id);
         $file->filenames=($data);
-        $file->title_id=$titleid;
+        $file->title_id=$id;
         $file->save();
-        
 
         $feacture=feacture::find($feacture_id);
         $feacture->title_id=$titleid;

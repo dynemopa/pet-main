@@ -5,6 +5,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 {{-- <a href="{{route('bookingadd')}}"> <button type="button" class="btn btn-success text-right">Add Booking</button></a> --}}
   <div class="header bg-primary pb-6">
     <div class="container-fluid">
@@ -18,7 +19,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-8">
-                    <input type="search" name="search" id="search" class="form-control" value="{{$search}}" placeholder="Enter Name And Email For Search" >
+                    <input type="search" name="search" id="search" class="form-control" value="{{$search}}" placeholder="Enter Guest" >
                   </div>
                   <div class="col-md-2"> <button class="btn btn-primary">Search</button></div>
                   <div class="col-md-2"> <a  href="{{url('booking/')}}">
@@ -56,9 +57,7 @@
             <table class="table align-items-center table-dark table-flush">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">address</th>
-                  <th scope="col">Rooms</th>
-                    <th scope="col">Name</th>
+                  
                     <th scope="col">Check-In</th>
                     <th scope="col">Check-Out</th>
                     <th scope="col">Guest</th>
@@ -67,15 +66,14 @@
                 </tr>
               </thead>
               @foreach ( $booking as $value)
-       
+            
               <tbody class="list">
-                <td>{{$value->files->title->feacture->address}}</td>
-                <td>{{$value->files->title->feacture->room}}</td>
-                <td>{{$value->name}}</td>
+               
                 <td>{{$value->checkin}}</td>
                 <td>{{$value->checkout}}</td>
                 <td>{{$value->guest}}</td>
                 <td>
+              
                   <a href="{{url('allbooking/')}}/{{$value->id}}" class="text-white"> 
                     <span class="mr-2"><i class="fa fa-eye" aria-hidden="true"></i></span>
                   </a>

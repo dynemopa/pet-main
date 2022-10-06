@@ -13,7 +13,7 @@
       <div class="header-body">
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Template Information</h6>
+            <h6 class="h2 text-white d-inline-block mb-0">All List</h6>
           </div>
 
           <div class="col-lg-6 col-7">
@@ -57,10 +57,11 @@
                
               <tbody class="list">
                   
-                  
+               
                       <tr>
                      
                         @foreach ( $title as $value)
+                       
                          @php 
                           $str1  = str_replace("[","",$value->file->filenames);
                           $str2  = str_replace("]","",$str1);
@@ -81,26 +82,26 @@
                        <td> {!!Str::limit($value->content,30)!!}</td>
                         <td>{{$value->price_per_night}}</td>
                         <td>{{$value->feacture->address}}</td>
-                      
+                     
                         <td>
                           
-                          <a href="{{url('showlist/')}}/{{$value->title_id}}" class="text-white"> 
+                          <a href="{{url('showlist/')}}/{{$value->id}}" class="text-white"> 
                             <span class="mr-2"><i class="fa fa-eye" aria-hidden="true"></i></span>
                           </a>
-                         
-                         <a href="{{url('listedit/')}}/{{$value->title_id}}/{{$value->file->files_id}}/{{$value->feacture->feacture_id}}"   class="text-white"> 
+                         <a href="{{url('listedit/')}}/{{$value->id}}/{{$value->file->id}}/{{$value->feacture->id}}"   class="text-white"> 
                             <span class="mr-2"><i class="fa fa-edit" title="View User"></i></span>
                           </a>
                        
-                          <a data-toggle="modal" data-target="#exampleModal{{$value->title_id}}{{$value->file->files_id}}{{$value->feacture->feacture_id}}" > 
+                          <a data-toggle="modal" data-target="#exampleModal{{$value->id}}{{$value->file->id}}{{$value->feacture->id}}" > 
                             <span class="mr-2"><i class="fa fa-trash" aria-hidden="true"></i></span>
                           </a>
-                         
+                        
                         </td>
+                     
 
-                          <div class="modal fade" id="exampleModal{{$value->title_id}}{{$value->file->files_id}}{{$value->feacture->feacture_id}}" tabindex="-1" role="dialog"  aria-hidden="true">
+                          <div class="modal fade" id="exampleModal{{$value->id}}{{$value->file->id}}{{$value->feacture->id}}" tabindex="-1" role="dialog"  aria-hidden="true">
                             
-                            <form  action="{{url('listdelete/')}}/{{$value->title_id}}/{{$value->file->files_id}}/{{$value->feacture->feacture_id}}"  method="get">
+                            <form  action="{{url('listdelete/')}}/{{$value->id}}/{{$value->file->id}}/{{$value->feacture->id}}"  method="get">
                                
                               {{ csrf_field() }}
                               <div class="modal-dialog" role="document">
@@ -151,10 +152,3 @@
   
    
 @endsection
-
-
-
-
-
-
-

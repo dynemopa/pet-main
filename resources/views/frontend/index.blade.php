@@ -1,6 +1,7 @@
 @extends('frontend.layout.main')
 @section('content')
 
+@foreach($video as $value)
 <style>
   body {margin:0;height:2000px;}
   
@@ -35,9 +36,19 @@
     background: #55ACEE;
     color: white;
   }
+  .demo
+  {
+    color: {{$value->title}}
+  }
   
   
   </style>
+  @endforeach
+  @foreach($video as $value)
+  @php 
+    $str3  = str_replace('"','',$value->images);
+    $str = explode(",",$str3);
+  @endphp
 <section id="hero">
   <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
@@ -46,7 +57,8 @@
     <div class="carousel-inner" role="listbox">
 
       <!-- Slide 1 -->
-      <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpeg)">
+
+      <div class="carousel-item active" style="background-image: url({{asset('uploads/students/'.$str[0])}})">
         <div class="carousel-container">
           <div class="container">
             <h2 class="animate__animated animate__fadeInDown d51">Enjoy a  Relaxing</span> visit</span><br>to Montgomery Alabama</h2>
@@ -104,6 +116,7 @@
 
   </div>
 </section>
+@endforeach
 
 <section class="container" id="rcorners3" style=" margin-top: -46px;">
   <form action="{{url('/montgomery')}}/{{"Montgomery"}}" method="get">
@@ -187,6 +200,8 @@
 </form>
 </section>
 <section class="test3">
+  
+  
   <h2 class="bar">Two Great Cities</h2>
   <p class="test2">From a room for a night to a loft for as long as you like, there’s a Dwella for every occasion.</p>
 
@@ -246,9 +261,10 @@
      
      
      <div class="col-md-6" id="rigt-mob-dwella">
-        <div class="col-md-12" >             
+        <div class="col-md-12" >    
+          @foreach($video as $value)        
             <video id="mob-video" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/final_62bec758f95a5f00be46a52c_443752__1__AdobeExpress-1.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload "></video>
-         
+         @endforeach
         </div>
 
     </div>
@@ -275,10 +291,11 @@
 
       @php
       $city="Birmingham";
-  @endphp
+      @endphp
       <a rel="tab_div2" onclick="javascript:ShowMyDiv(this);" class="btn btn-primary rs">{{$city}}</a>
         
     </div>
+   
  
    <div class="tabcontents">
       <div class="tabcontent" id="tab_div1" style="display: block;">
@@ -286,6 +303,7 @@
           <div class="row">
               <div class="col-md-6" >
                 <img src=" https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/02/04-1-1.png" class="img-fluid imgrad1" alt="Responsive image" />
+                
 
               </div>
               <div class="col-md-6" >
@@ -302,49 +320,30 @@
       <div class="container">
 
         <div class="row">
+          @foreach ( $title1 as $value)
+                       
+          @php 
+          $str1  = str_replace("[","",$value->file->filenames);
+          $str2  = str_replace("]","",$str1);
+          $str3  = str_replace('"','',$str2);
+          $str = explode(",",$str3);
+          @endphp
           <div class="col-md-4">
             <div class="card mb-4 box-shadow d411 " >
-              <img class="card-img-top d411" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/03/b3ad365b-b1ff-4a9b-9e6f-b2b201fdaab7-400x314.jpeg">
+             
+              <img class="card-img-top d411" src="{{asset('uploads/students/'.$str[0])}}" height="100%"  width="100%" class="d11"/>
               <div class="card-body d412" >
-                <p class="card-text  d49" >Spacious 1BR at 79 Commerce</p>
-                 <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Downtown Montgomery, Downtowns, Montgomery, Montgomery</div>
+                <p class="card-text  d49" >{{$value->title}}</p>
+                 <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">{{$value->city}}</div>
                  <i class="fa fa-home" aria-hidden="true"></i>
                  <div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Apartment / Private room</div>
                
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow d411 ">
-              <img class="card-img-top d411" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2015/04/05-400x314.jpeg" alt="Card image cap">
-              <div class="card-body d412 ">
-                <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                   <p class="card-text d49 " >Charming 1BR at 79 Commerce</p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Downtown Montgomery, Downtowns, Montgomery, Montgomery</div>
-                 <i class="fa fa-home" aria-hidden="true"></i>
-                 <div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Apartment / Private room</div>
-               
-               
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow d411 ">
-              <img class="card-img-top d411 " src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/03/04-400x314.jpg">
-              <div class="card-body d412 " >
-
-                <p class="card-text  d49" >Bright 1 BR at 79 Commerce</p>
-                 <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Downtowns, Montgomery, Montgomery</div>
-                 <i class="fa fa-home" aria-hidden="true"></i>
-                 <div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Apartment / Private room</div>
-              
-              </div>
-            </div>
-          </div>
+          @endforeach
+          
+          
         </div>
       </div>
     </div>
@@ -355,6 +354,7 @@
 
 
       </div>
+    
       <div class="tabcontent" id="tab_div2" style="display: none;">
 
           <div class="col-md-12">
@@ -374,11 +374,20 @@
       <div class="container">
 
         <div class="row">
+          
+          @foreach ( $title2 as $value)
+                       
+          @php 
+          $str1  = str_replace("[","",$value->file->filenames);
+          $str2  = str_replace("]","",$str1);
+          $str3  = str_replace('"','',$str2);
+          $str = explode(",",$str3);
+          @endphp
           <div class="col-md-4">
             <div class="card mb-4 box-shadow d411 " >
-              <img class="card-img-top d411" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/03/12_707_Richard_Arrington_Blvd12_mls-400x314.jpg">
+              <img class="card-img-top d411" src="{{asset('uploads/students/'.$str[0])}}" height="100%"  width="100%" class="d11"/>
               <div class="card-body d412" >
-                <p class="card-text  d49" >Spacious 1BR at 79 Commerce</p>
+                <p class="card-text  d49" >{{$value->title}}</p>
                  <i class="fa fa-map-marker" aria-hidden="true"></i><div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Birmingham</div>
                  <i class="fa fa-home" aria-hidden="true"></i>
                  <div style="font-size: 14px; color: darkgray; margin-top: -24px; margin-left: 21px;">Apartment / Private room</div>
@@ -386,6 +395,7 @@
               </div>
             </div>
           </div>
+          @endforeach
         </div>
       </div>
     </div>
@@ -402,9 +412,15 @@
 <section>
     <div class="video-background-holder">
 <div class="video-background-overlay"></div>
+
 <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-      <source src="https://images.sonder.com/video/upload/v1618348428/catalina/homepage/background-video.mp4" type="video/mp4">
-  </video>
+  @foreach($video as $value)
+      <source src="{{asset('uploads/students/'.$value->choose_video)}}" type="video/mp4">
+
+  @endforeach
+      </video>
+      
+ 
 <div class="video-background-content container h-100">
   <div class="d-flex h-100 text-center align-items-center">
     <div class="w-100 text-white">

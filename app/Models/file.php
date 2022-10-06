@@ -11,7 +11,6 @@ class file extends Model
     protected $fillable = [
         'filenames'
     ];
-    protected $primaryKey = 'files_id';
     public function setFilenamesAttribute($value)
     {
         $this->attributes['filenames'] = json_encode($value);

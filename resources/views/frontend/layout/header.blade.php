@@ -82,7 +82,7 @@
           <li><a href="{{url('/service')}}">Checkin</a></li>
           <li class="dropdown"><a href="#"><span></span> <i >&#9776;</i></a>
             <ul>
-              <li><a href="{{url('/')}}">Home</a></li>
+              <li><a href="{{url('/home')}}">Home</a></li>
               <li><a href="{{url('/about')}}">About</a></li>
               <li><a href="{{url('/parthership')}}">Parthership</a></li>
                <li><a href="{{url('/support')}}">Support</a></li>

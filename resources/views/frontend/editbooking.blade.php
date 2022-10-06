@@ -39,44 +39,22 @@
                             </div>
                             <div class="row"> 
                                 <div class="col-md-4">
-                                    <div class="form-group"> 
-                                        <select class="form-control" name="rooms" id="rooms" required> 
-                                            <option value="" selected hidden>Rooms</option>
-                                            <option value="1"{{($booking->rooms === '1') ? 'Selected' : ''}}>1</option>
-                                            <option value="2"{{($booking->rooms === '2') ? 'Selected' : ''}}>2</option>
-                                            <option value="3"{{($booking->rooms === '3') ? 'Selected' : ''}}>3</option>
-                                            <option value="4"{{($booking->rooms === '4') ? 'Selected' : ''}}>4</option>
-                                            <option value="5"{{($booking->rooms === '5') ? 'Selected' : ''}}>5</option>
-                                            <option value="6"{{($booking->rooms === '6') ? 'Selected' : ''}}>6</option>
-                                        </select> 
-                                       
-                                        <span class="select-arrow"></span>
-                                    </div> 
-                                </div> 
-                                <div class="col-md-4">
                                     <div class="form-group">
                                         <select class="form-control" name="guest" id="guest" required>
                                             <option value="" selected hidden>Guest</option>
                                             <option {{($booking->guest === '1') ? 'Selected' : ''}}>1</option>
                                             <option {{($booking->guest === '2') ? 'Selected' : ''}}>2</option>
                                             <option {{($booking->guest === '3') ? 'Selected' : ''}}>3</option> 
+                                            <option {{($booking->guest === '4') ? 'Selected' : ''}}>4</option>
+                                            <option {{($booking->guest === '5') ? 'Selected' : ''}}>5</option>
+                                            <option {{($booking->guest === '6') ? 'Selected' : ''}}>6</option>
+                                            <option {{($booking->guest === '7') ? 'Selected' : ''}}>7</option> 
+                                            <option {{($booking->guest === '8') ? 'Selected' : ''}}>8</option>
+                                            <option {{($booking->guest === '9') ? 'Selected' : ''}}>9</option>
+                                            <option {{($booking->guest === '10') ? 'Selected' : ''}}>10</option> 
                                         </select> 
                                         <span class="select-arrow"></span>
                                     </div>
-                                </div> 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group"> 
-                                        <input class="form-control" type="email" name="email" id="email" value="{{$booking->email}}" > 
-                                        <span class="form-label">Email</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input class="form-control" type="tel" name="phone" id="phone" value="{{$booking->phone}}">
-                                            <span class="form-label">Phone</span> 
-                                    </div> 
                                 </div> 
                             </div>
                             <div class="form-btn"> 

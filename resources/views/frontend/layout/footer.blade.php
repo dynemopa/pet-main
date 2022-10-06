@@ -12,8 +12,10 @@
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 
         <div>
+          <a  href="{{url('/home')}}">
           <img src="https://mb5.bfe.myftpupload.com/wp-content/uploads/2022/06/Group-11-1024x254.png" height="30" alt=""
                loading="lazy" />
+          </a>
         </div>
 
        
@@ -29,19 +31,19 @@
 
         <ul class="list-unstyled">
           <li class="mb-2">
-            <a href="#!" class="text-white"> About Us</a>
+            <a  href="{{url('about')}}" class="text-white"> About Us</a>
           </li>
           <li class="mb-2">
-            <a href="#!" class="text-white">Partnership</a>
+            <a href="{{url('parthership')}}" class="text-white">Partnership</a>
           </li>
           <li class="mb-2">
-            <a href="#!" class="text-white">Blog</a>
+            <a href="{{url('blog')}}" class="text-white">Blog</a>
           </li>
           <li class="mb-2">
-            <a href="#!" class="text-white">Login</a>
+            <a href="{{route('login')}}" class="text-white">Login</a>
           </li>
           <li class="mb-2">
-            <a href="#!" class="text-white">Signup</a>
+            <a  href="{{route('register')}}" class="text-white">Signup</a>
           </li>
           
         </ul>
@@ -54,7 +56,7 @@
 
         <ul class="list-unstyled">
           <li class="mb-2">
-            <a href="#!" class="text-white">Help Center</a>
+            <a  href="{{url('support')}}" class="text-white">Help Center</a>
           </li>
           
         </ul>

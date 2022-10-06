@@ -72,7 +72,7 @@
                 </div>
                 <div class="row" style=" margin-top: 10px;">
                     <div class="col-md-6"><img src="{{asset('uploads/students/'.$str[3])}}" style=" width:100%;height:100%"/></div>
-                    <div class="col-md-6">  <a href="{{url('/gallery/')}}/{{$value->title_id}}"><img class="demo" src="{{asset('uploads/students/'.$str[4])}}" style=" width:100%;height:100%;cursor: pointer;"/><p style="color: white; margin-top: -119px;  margin-left: 98px; color:black; font-size:20px"><b>See All Image</b></p></a></div>
+                    <div class="col-md-6">  <a href="{{url('/gallery/')}}/{{$value->id}}"><img class="demo" src="{{asset('uploads/students/'.$str[4])}}" style=" width:100%;height:100%;cursor: pointer;"/><p style="color: white; margin-top: -119px;  margin-left: 98px; color:black; font-size:20px"><b>See All Image</b></p></a></div>
 
                 </div>
             </div>
@@ -253,7 +253,7 @@
                     <div class="d113" style="    background-color: #8b6013e0; padding: 11px;">
                         <center><p>USD 150 per night</p></center>
                     </div>
-                    <form action="{{url('/showbooking/')}}" method="get">
+                    <form action="{{url('/showbooking/')}}/{{$value->id}}" method="get">
                         @if(session('success'))
                             <div class="alert alert-success">
                             {{ session('success') }}
@@ -266,7 +266,7 @@
                         <div class="col-md-12">
 
                             <div class="form-group">
-                                <input class="form-control" type="hidden" name="title_id" value="{{$value->title_id}}"> 
+                                <input class="form-control" type="hidden" name="id" value="{{$value->id}}"> 
                             </div> 
                             
                             <div class="form-group">
@@ -365,11 +365,8 @@ function initMap() {
     center: uluru,
   });
   const contentString =
-   
-   
-   
+
         '<img src="https://media-cdn.tripadvisor.com/media/photo-s/17/b9/78/91/capital-o-3539-hotel.jpg" alt="Girl in a jacket" width="300px" height="157">'
-   
 
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
