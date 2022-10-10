@@ -26,10 +26,12 @@
               <label for="formFileDisabled" class="form-label">Mobile Video</label>
               <input class="form-control" name="mobile_video" type="file" id="formFileMultiple" >
             </div>
+
             <div class="mb-3">
               <label for="formFileDisabled" class="form-label">Backgroung video</label>
               <input class="form-control" name="choose_video" type="file" id="formFileMultiple" >
             </div>
+            
             <div class="mb-3">
               <label for="formFileDisabled" class="form-label">Mutiple Image for Slider</label>
               <input class="form-control" name="images[]" type="file" id="formFileMultiple" multiple>

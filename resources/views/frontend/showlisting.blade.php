@@ -6,8 +6,8 @@
 
 @section('content')
 
-<a href="{{route('listing')}}"> <button type="button" class="btn btn-success text-right">Add List</button></a>
-<button type="button" onclick="window.print()" class="btn btn-success text-right">Print</button>
+<a href="{{route('listing')}}"> <button type="button" class="btn btn-success text-right" style="background-color: #1282a2;">Add List</button></a>
+<button type="button" onclick="window.print()" class="btn btn-success text-right" style="background-color: #1282a2;">Print</button>
   <div class="header bg-primary pb-6">
     <div class="container-fluid">
       <div class="header-body">
@@ -49,45 +49,32 @@
                     <th scope="col">slug</th>
                     <th scope="col">content</th>
                     <th scope="col">price_per_night</th>
-                    <th scope="col">address</th>
                     <th scope="col">Action</th>
         
                 </tr>
               </thead>
-               
               <tbody class="list">
-                  
-               
                       <tr>
-                     
                         @foreach ( $title as $value)
-                       
-                         @php 
-                          $str1  = str_replace("[","",$value->file->filenames);
-                          $str2  = str_replace("]","",$str1);
-                          $str3  = str_replace('"','',$str2);
-                          $str = explode(",",$str3);
-                          
-                         
-                        @endphp
-                        
-                    
+                          @php 
+                            $str1  = str_replace("[","",$value->file->filenames);
+                            $str2  = str_replace("]","",$str1);
+                            $str3  = str_replace('"','',$str2);
+                            $str = explode(",",$str3);
+                          @endphp
                         <td>
-                         
                             <img src="{{asset('uploads/students/'.$str[0])}}" style="height:50px; width:50px"/>
-                         
                         </td>
                         <td>{{$value->title}}</td>
                         <td>{{$value->slug}}</td>
-                       <td> {!!Str::limit($value->content,30)!!}</td>
+                        <td> {!!Str::limit($value->content,30)!!}</td>
                         <td>{{$value->price_per_night}}</td>
-                        <td>{{$value->feacture->address}}</td>
-                     
                         <td>
                           
                           <a href="{{url('showlist/')}}/{{$value->id}}" class="text-white"> 
                             <span class="mr-2"><i class="fa fa-eye" aria-hidden="true"></i></span>
                           </a>
+                          
                          <a href="{{url('listedit/')}}/{{$value->id}}/{{$value->file->id}}/{{$value->feacture->id}}"   class="text-white"> 
                             <span class="mr-2"><i class="fa fa-edit" title="View User"></i></span>
                           </a>
@@ -97,12 +84,8 @@
                           </a>
                         
                         </td>
-                     
-
                           <div class="modal fade" id="exampleModal{{$value->id}}{{$value->file->id}}{{$value->feacture->id}}" tabindex="-1" role="dialog"  aria-hidden="true">
-                            
                             <form  action="{{url('listdelete/')}}/{{$value->id}}/{{$value->file->id}}/{{$value->feacture->id}}"  method="get">
-                               
                               {{ csrf_field() }}
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -113,7 +96,6 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                   
                                     <label for="delete">Please Enter Validation Code</label>
                                     <input type='text' class="form-control"  class="form-control" name='text1' id="text1"  autocomplete="off"/>
                                   </div>

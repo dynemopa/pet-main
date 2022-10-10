@@ -624,7 +624,6 @@ padding-left: 5%;
 .p3
 {
   padding-top: 25%;
-  
    font-size: 40px;
   font-family: Georgia, serif;
   color: #9F7534;
@@ -1026,7 +1025,7 @@ ul.tabs
 
   .d43
   {
-    height: 272px;
+    height: 340px;
     text-align: justify;
     padding: 30px;
   }
@@ -1312,6 +1311,42 @@ input[type="text"]:focus {
 {
   padding-top: 20px;
 }
+.videosection
+{
+  height: 26%;
+}
 
+@media (min-width: 320px) and (max-width: 767px)
+{
+    .videosection
+  {
+    height: 41%;
+  }
+  .montogomy
+  {
+    margin-top: 1%;
+  }
+  .ser
+  {
+    margin-left: 1px;
+  }
+  .mapheight
+  {
+    height: 300px;
+  }
+}
 
-
+  @media (min-width: 1200px) and (max-width: 1800px)
+  {
+    .ser
+    {
+      margin-left: -23px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1199px)
+  {
+    .ser
+    {
+      margin-left: -23px;
+    }
+  }

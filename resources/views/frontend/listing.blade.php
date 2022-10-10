@@ -1,14 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<html lang="en">
-<head>
-  <title>Laravel 8 Multiple Image Upload Real Programmer</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
- 
-</head>
-<body>
+
   <a href="{{route('showlisting')}}"> <button type="button" class="btn btn-primary text-right">BACK</button></a>
     <div class="container">
   
@@ -35,6 +28,7 @@
         <div class="clone hide">
           <div class="hdtuto control-group lst input-group" style="margin-top:10px">
             <input type="file" name="filenames[]" class="myfrm form-control">
+            
             <div class="input-group-btn" style="padding-left: 10px"> 
               <button class="btn btn-danger" type="button"><i class="fldemo glyphicon glyphicon-remove"></i> Remove</button>
             </div>

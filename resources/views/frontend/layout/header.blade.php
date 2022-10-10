@@ -45,14 +45,15 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
-
+ 
       <a class="logo me-auto d1" href="{{url('/home')}}"><img src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/06/Group-10.png" width="153px"></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+      <div id="google_translate_element" style="height: 21px;"></div>
       <nav id="navbar" class="navbar">
+      
         <ul>
-          <li><div id="google_translate_element" style="height: 21px;"></div></li>
+          <li></li>
          <li>
           <?php if (Auth::check()) { ?>
                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -81,7 +82,7 @@
           <li><a href="{{route('register')}}">Sign-up</a></li>
           <li><a href="{{url('/service')}}">Checkin</a></li>
           <li class="dropdown"><a href="#"><span></span> <i >&#9776;</i></a>
-            <ul>
+            <ul style="background-color: #eaece2">
               <li><a href="{{url('/home')}}">Home</a></li>
               <li><a href="{{url('/about')}}">About</a></li>
               <li><a href="{{url('/parthership')}}">Parthership</a></li>
@@ -97,9 +98,9 @@
     </div>
     <script  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en',}, 'google_translate_element');
-  }
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
   </script>
   </header>
 

@@ -42,5 +42,6 @@
        </div>
        <div style="margin-top: 20px;margin-left:42%"><a href="{{url('show_front/')}}/{{$value->id}}"><button class="btn btn-primary">Show in index page</button></a></div>
 </div>
+
 @endforeach
 @endsection

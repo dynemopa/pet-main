@@ -3,7 +3,7 @@
 
 @foreach($video as $value)
 <style>
-  body {margin:0;height:2000px;}
+  
   
   .icon-bar {
     position: fixed;
@@ -40,7 +40,15 @@
   {
     color: {{$value->title}}
   }
-  
+  #loading {
+    background: #000 url('https://media.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif') no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+}
   
   </style>
   @endforeach
@@ -49,21 +57,24 @@
     $str3  = str_replace('"','',$value->images);
     $str = explode(",",$str3);
   @endphp
+  <div id="loading"></div>
+
 <section id="hero">
   <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
     <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
     <div class="carousel-inner" role="listbox">
-
       <!-- Slide 1 -->
-
       <div class="carousel-item active" style="background-image: url({{asset('uploads/students/'.$str[0])}})">
         <div class="carousel-container">
           <div class="container">
-            <h2 class="animate__animated animate__fadeInDown d51">Enjoy a  Relaxing</span> visit</span><br>to Montgomery Alabama</h2>
-            <p class="d51">Dwella mantgomery , AL|5 Listing</p>
-            
+            <div class="col md-12">
+              <div class="row" >
+                <div class="col-md-7">
+                  <h2 class="animate__animated animate__fadeInDown d51">Enjoy a Relaxing visit to Montgomery Alabama</h2>
+                  <p class="d51">Dwella mantgomery , AL|5 Listing</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -73,37 +84,49 @@
       <div class="carousel-item" style="background-image: url('https://img.freepik.com/premium-photo/clean-white-bedroom-nice-view-guesthouse-accommodation-pillows-blankets-white-white-photo-frame-white-space-text_25250-122.jpg?w=2000')">
         <div class="carousel-container">
           <div class="container">
-            <h2 class="animate__animated animate__fadeInDown d51" >Modern Downtown Loft </h2>
-            <p class="animate__animated animate__fadeInUp d52" >Birmingham, Alabama, is known as the “Dinner Table of the South.” From <br>the country’s best barbecue to global dishes with the influence of the American South </p>
-          <p class="d52">Dwella mantgomery , AL|5 Listing</p>
+            <div class="col md-12">
+              <div class="row" >
+                <div class="col-md-7">
+                  <h2 class="animate__animated animate__fadeInDown d51" >Modern Downtown Loft </h2>
+                  <p class="animate__animated animate__fadeInUp d52" >Birmingham, Alabama, is known as the “Dinner Table of the South.” From  the country’s best barbecue to global dishes with the influence of the American South </p>
+                  <p class="d52">Dwella mantgomery , AL|5 Listing</p>
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
-
       </div>
       <!-- Slide 3 -->
       <div class="carousel-item" style="background-image: url('https://media.cntraveler.com/photos/61e08b00abc79c35233fa50b/master/w_2045,h_1363,c_limit/Bedroom-ArtHotel-DenverCO-CRHotel.jpeg')">
         <div class="carousel-container">
           <div class="container ">
-            <h2 class="animate__animated animate__fadeInDown d51" >Dwella's unique spaces<br>for travel, work and life </h2>
-            <p class="animate__animated animate__fadeInUp d52">Birmingham, Alabama, is known as the<br>“Dinner Table of the South.” From the country’s best barbecue<br> to global dishes with the influence of <br>the American South </p>
-          <p class=" d52">Dwella mantgomery , AL|5 Listing</p>
+            <div class="col md-12">
+              <div class="row" >
+                <div class="col-md-7">
+                  <h2 class="animate__animated animate__fadeInDown d51" >Dwella's unique spaces for travel, work and life </h2>
+                  <p class="animate__animated animate__fadeInUp d52">Birmingham, Alabama, is known as the “Dinner Table of the South.” From the country’s best barbecue  to global dishes with the influence of  the American South </p>
+                <p class=" d52">Dwella mantgomery , AL|5 Listing</p>
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
-
       </div>
-
       <!-- Slide 4 -->
       <div class="carousel-item" style="background-image: url(assets/img/slide/slide-4.jpg)">
         <div class="carousel-container">
           <div class="container">
-            <h2 class="animate__animated animate__fadeInDown d51">Dwella's unique spaces <br>to Birmingham Alabama </h2>
-             <p class=" d52">Dwella mantgomery , AL|5 Listing</p>
+            <div class="col md-12">
+              <div class="row" >
+                <div class="col-md-7">
+                  <h2 class="animate__animated animate__fadeInDown d51">Dwella's unique spaces <br>to Birmingham Alabama </h2>
+                  <p class=" d52">Dwella mantgomery , AL|5 Listing</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
 
     <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
@@ -120,9 +143,7 @@
 
 <section class="container" id="rcorners3" style=" margin-top: -46px;">
   <form action="{{url('/montgomery')}}/{{"Montgomery"}}" method="get">
-  <div id="rcorners2">
-      
-
+    <div id="rcorners2">
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-4">
@@ -131,7 +152,6 @@
                 <div class="col-md-1">
                   <i class="fa fa-search" aria-hidden="true"></i></i>
                 </div>
-
                 <div class="col-md-11" style="margin-top:-32px; margin-left:15px;">
                   <input style="width: 90%;" class="form-control d53" list="browsers" name="city" placeholder="Birmingham & Montgomery" >
                   <datalist id="browsers">
@@ -147,13 +167,13 @@
               </div>
             </div>
           </div>
+
           <div class="col-md-2">
             <div id="rcorners5">
               <div class="row">
                 <div class="col-md-1">
                   <i class="fa fa-calendar" aria-hidden="true"></i>
                 </div>
-
                 <div class="col-md-10" style="margin-top:-39px; margin-left:15px;">
                   <input type="text" id="checkindate" name="checkin" class="form-control d53" placeholder="Check In" style="padding: 5px;">
                 </div>
@@ -167,60 +187,62 @@
                 <div class="col-md-1">
                   <i class="fa fa-calendar" aria-hidden="true"></i>
                 </div>
-
-                <div class="col-md-10" style="margin-top:-39px; margin-left:15px;">
+                <div class="col-md-11" style="margin-top:-39px; margin-left:15px;">
                   <input type="text" id="checkoutdate" name="checkout" class="form-control d53" placeholder="Check Out" style="padding: 5px;">
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-2">
-            <div  id="rcorners6" style="margin-left: -39px;">
+            <div id="rcorners5">
+              <div class="row">
+                <div class="col-md-1">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-11" style="margin-top:-39px; margin-left:15px;">
+                  <input type="number"  name="guest" class="form-control d53" placeholder="Guest" style="padding: 12px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          {{-- <div class="col-md-2">
+            <div  id="rcorners5" class="guest1" >
               <div class="row d54">
                 <div class="col-md-1">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 </div>
-                <div class="col-md-10" style="margin-top:-15px; margin-left:15px;">Guests
+                <div class="col-md-10 guest" >Guests
                     <button onclick="decrement()" class="d5"><span style="font-size: 30px">-</span></button>
                     <input style="width: 31%" name="guest" id=demoInput class=" d55"  type=number min=1 max=10 >
                     <button onclick="increment()" class="d5" >+</button>
-                    
                 </div>
               </div>
             </div>
-
-          </div>
-          <div class="col-md-2" style="padding-top: 9px; padding-left: 26px;">
-           <button type="submit"  class="btn btn-primary d56">Search</button>
+          </div> --}}
+          <div class="col-md-2" style="padding-top: 9px;">
+           <button type="submit"  class="btn btn-primary d56 ser">Search</button>
           </div>
         </div>
       </div>
-
- </div>
-</form>
+    </div>
+  </form>
 </section>
+
 <section class="test3">
-  
-  
   <h2 class="bar">Two Great Cities</h2>
   <p class="test2">From a room for a night to a loft for as long as you like, there’s a Dwella for every occasion.</p>
-
-
-
- <div class="col-md-12">
-   <div class="row">
+  <div class="col-md-12">
+    <div class="row">
       <div class="col-md-6" > 
         @php
-        $string = "Montgomery";
-      @endphp 
-      <a href="{{url('/montgomery')}}/{{$string}}"> <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&w=1000&q=80" class="img-fluid imgrad1" alt="Responsive image" /><p class="p1"><b> 5 Listings</b></p></a>
-      
-        
-      <h2  class="p2">{{$string}} </h2>
+          $string = "Montgomery";
+        @endphp 
+        <a href="{{url('/montgomery')}}/{{$string}}"> <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&w=1000&q=80" class="img-fluid imgrad1" alt="Responsive image" /><p class="p1"><b> 5 Listings</b></p></a>
+        <h2  class="p2">{{$string}} </h2>
       </div>
       @php
-      $string = "Birmingham";
-    @endphp 
+        $string = "Birmingham";
+      @endphp 
       <div class="col-md-6"> 
         <a href="{{url('/montgomery')}}/{{$string}}"> <img src="https://images.unsplash.com/photo-1615460549969-36fa19521a4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGhvdGVsfGVufDB8fDB8fA%3D%3D&w=1000&q=80" class="img-fluid imgrad2 " alt="Responsive image"/>
         <p class="p1"><b> 1 Listings</b></p></a>
@@ -228,29 +250,20 @@
       </div>
     </div>
   </div>
-
-  
-     
 </section>
 
-<section class="section1 container-fluid" style="height: 26%;">
-<div class="col-md-12">
-  <div class="row">
+<section class="section1 container-fluid videosection" >
+  <div class="col-md-12">
+    <div class="row">
       <div class="col-md-6 p4">
+        <h1 class="p3">Mobile version of Dwella</h1>
+        <p>From award-winning interiors to curated neighborhood guides, our stays celebrate what’s special about each city we call home.</p>
         <div class="row">
-          <div class="col-md-12 "> 
-            <h1 class="p3">Mobile version of Dwella</h1>
-            <p>From award-winning interiors to curated neighborhood guides, our stays celebrate what’s special about each city we call home.</p>
-          </div>
+            <div class="col-md-3"> <i class="fa fa-comments-o fa-2xs p5" aria-hidden="true"></i></div>
+            <div class="col-md-3 "> <p>24/7 in-app customer service</p></div>
+            <div class="col-md-3 "> <i class="fa fa-wifi p5" aria-hidden="true"></i></i></div>
+            <div class="col-md-3 "> <p>One-tap WiFi access</p></div>
         </div>
-
-        <div class="row">
-          <div class="col-md-3 "> <i class="fa fa-comments-o fa-2xs p5" aria-hidden="true"></i></div>
-          <div class="col-md-3 "> <p>24/7 in-app customer service</p></div>
-          <div class="col-md-3 "> <i class="fa fa-wifi p5" aria-hidden="true"></i></i></div>
-          <div class="col-md-3 "> <p>One-tap WiFi access</p></div>
-        </div>
-
         <div class="row">
           <div class="col-md-3 "> <i class="fa fa-map-marker p5" aria-hidden="true"></i></div>
           <div class="col-md-3 "> <p>Neighborhood guides</p></div>
@@ -258,29 +271,26 @@
           <div class="col-md-3 "> <p>Request late checkout</p></div>
         </div>
       </div>
-     
-     
-     <div class="col-md-6" id="rigt-mob-dwella">
-        <div class="col-md-12" >    
-          @foreach($video as $value)        
-            <video id="mob-video" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/final_62bec758f95a5f00be46a52c_443752__1__AdobeExpress-1.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload "></video>
-         @endforeach
-        </div>
 
+      <div class="col-md-6" id="rigt-mob-dwella">  
+          <div class="smartphone">   
+            <video id="mob-video" src="https://secureservercdn.net/198.71.233.183/mb5.bfe.myftpupload.com/wp-content/uploads/2022/07/final_62bec758f95a5f00be46a52c_443752__1__AdobeExpress-1.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload "></video>
+         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 
 
-<section>
-<h5 class="h5header">A stay infused with creativity and culture</h5>
-<p class="p6">From award-winning interiors to curated neighborhood guides, our stays celebrate what’s special about each city we call home</p>
- 
+<section class="montogomy">
+  <h5 class="h5header">A stay infused with creativity and culture</h5>
+  <p class="p6">From award-winning interiors to curated neighborhood guides, our stays celebrate what’s special about each city we call home</p>
 </section>
 
 <!--  tab field -->
 <section>
-<div class="container">
+  <div class="container">
   
     <div class="row">
       @php
@@ -505,10 +515,8 @@
 <!--  end slider section -->
 <!-- start Album sction -->
 <section>
-
     <div class="album py-5">
       <div class="container " data-aos="zoom-in  "  >
-
         <div class="row">
           <div class="col-md-4">
             <div class="card mb-4 box-shadow d48">
@@ -517,8 +525,6 @@
                 <p class="card-text  d42" >How we’ve increased cleaning standards for Dwella across the globe</p>
                  <p class="card-text d41"  >At Dwella, we know that now more than ever, a clean and safe place to stay is a top concern. Your health and well-being are</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  
-                 
                 </div>
               </div>
             </div>
@@ -530,8 +536,6 @@
                 <p class="card-text d42" >Life at Dwella: creating memorable experiences for our guests</p>
                 <p class="card-text d41">Our Service Principles are a set of values that guides our customer guest services team members when we’re communicating with guests. We incorporate our principles</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  
-               
                 </div>
               </div>
             </div>
@@ -563,5 +567,12 @@
 </div>
 
 
-<!-- end  Album sction -->
+<script>
+var loader=document.getElementById("loading");
+window.addEventListener("load",function()
+{
+  loader.style.display="none";
+})
+</script>
+
   @endsection

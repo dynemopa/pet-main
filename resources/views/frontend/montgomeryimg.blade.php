@@ -86,7 +86,7 @@
                     <p class="d113" style="font-size: 22px">{{$value->title}}</p>
                     <p class="d113" ><span><i class="fa fa-home" aria-hidden="true"></i></span>&nbsp; <a href="{{url('/montgomery')}}">Private room</a> &nbsp;&nbsp; <span>&nbsp;<i class="fa fa-building" aria-hidden="true"></i></span> &nbsp;<a href="{{url('/montgomery')}}">Apartment</a> &nbsp;&nbsp;<span>&nbsp;<i class="fa fa-user" aria-hidden="true"></i> &nbsp;8 Guests&nbsp;&nbsp;<span>&nbsp;<i class="fa fa-bed" aria-hidden="true"></i></span>&nbsp;1 Bedroom</p>
                     <p class="d113" style="font-size: 15px">{!!$value->content!!}</p>
-                    <div class=" shadow-sm p-3 mb-5  rounded d114 " >
+                    <div class=" shadow-sm p-3 mb-5  rounded d114">
                         <p>Property Price</p>
                         <div class="col-md-12">
                             <div class="row">

@@ -55,9 +55,7 @@ class ListingController extends Controller
     }
     public function updatelist(Request $request,$id,$file_id,$feacture_id )
     {
-       
         $request->validate( [
-           
             'title'=>'required|max:255|min:10',
             'slug'=>'required',
             'content'=>'required',
@@ -80,9 +78,8 @@ class ListingController extends Controller
             'terms'=>'required',
 
         ]);
-        
         $title=title::find($id);
-         
+        $title->slug= $request['slug'];
         $title->title= $request['title'];
         $title->price_per_night= $request['price_per_night'];
         $title->content= $request['content'];
@@ -92,7 +89,6 @@ class ListingController extends Controller
         $titleid = $title->id;
         $file = file::find($file_id);
         $data=array();
-
         if($request->hasfile('filenames'))
         {
            foreach($request->file('filenames') as $image)
@@ -104,7 +100,6 @@ class ListingController extends Controller
            }
           
         }
-
        else
        {
         $data=$file->filenames;  

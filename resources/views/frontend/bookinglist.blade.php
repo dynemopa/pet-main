@@ -21,12 +21,12 @@
                   <div class="col-md-8">
                     <input type="search" name="search" id="search" class="form-control" value="{{$search}}" placeholder="Enter Guest" >
                   </div>
-                  <div class="col-md-2"> <button class="btn btn-primary">Search</button></div>
-                  <div class="col-md-2"> <a  href="{{url('booking/')}}">
+                  <div class="col-md-4">
+                    <button class="btn btn-primary">Search</button>
+                    <a  href="{{url('booking/')}}">
                     <button class="btn btn-primary" type="button">Reset</button>
                     </a>
                   </div>
-
                 </div>
               </div>
              </div>
